@@ -7,6 +7,7 @@ import Lab2 from "../LabItems/Lab2";
 import Lab3 from "../LabItems/Lab3";
 import Lab4 from "../LabItems/Lab4";
 import PredictionText from "../PredictionText";
+import Button from '../Button';
 
 const tabs = [
   {
@@ -57,18 +58,12 @@ function TabPanels() {
       <PredictionText />
       {/* BUTTON */}
       <div className={style.interactionArea}>
-        <button className={clsx(
-          style.btn,
-          style.btnPredict,
-        )}>
+        <Button success>
           Predict
-        </button>
-        <button className={clsx(
-          style.btn,
-          style.btnReset,
-        )}>
+        </Button>
+        <Button danger>
           Reset
-        </button>
+        </Button>
       </div>
     </div>
   </div>

@@ -30,20 +30,3 @@
     justify-content: space-evenly;
     gap: 10px;
   }
-  
-  .btn {
-    cursor: pointer;
-    padding: 10px 60px;
-    border-radius: 5px;
-    color: black;
-    font-size: 20px;
-    border: none;
-  }
-  
-  .btnPredict {
-    background-color: greenyellow;
-  }
-  
-  .btnReset {
-    background-color: red;
-  }
