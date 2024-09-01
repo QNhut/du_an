@@ -1,0 +1,49 @@
+.tabContainer {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  .tabButton {
+    padding: 10px;
+    margin-right: 5px;
+    background-color: #f0f0f0;
+    color: #000;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .tabButton.active {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .tabContent {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .interactionArea {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    justify-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+  }
+  
+  .btn {
+    cursor: pointer;
+    padding: 10px 60px;
+    border-radius: 5px;
+    color: black;
+    font-size: 20px;
+    border: none;
+  }
+  
+  .btnPredict {
+    background-color: greenyellow;
+  }
+  
+  .btnReset {
+    background-color: red;
+  }

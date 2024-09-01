@@ -1,0 +1,38 @@
+.root {
+    margin-bottom: 20px;
+  }
+  
+  .root span {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Optional: adds space between items */
+  }
+  
+  .controlPanel {
+    flex: 0 1 calc(50% - 10px);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px; /* Optional: adds space between label and input */
+  }
+  
+  .controlPanel label {
+    flex: 0 1 25%;
+    box-sizing: border-box;
+  }
+  
+  .controlPanel input {
+    flex: 0 1 75%;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #ffd4d4;
+    border: none;
+  }
+  

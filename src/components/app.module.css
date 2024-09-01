@@ -1,0 +1,18 @@
+.wrapper {
+  display: flex;
+  gap: 40px;
+}
+
+.container {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.typo {
+  font-size: 20px;
+  background-color: pink;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+}

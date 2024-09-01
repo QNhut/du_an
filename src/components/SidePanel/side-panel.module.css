@@ -1,0 +1,24 @@
+.root {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0 0 20px;
+    flex-direction: column;
+  }
+  
+  .item {
+    display: flex;
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+    align-items: center;
+    background-color: silver;
+    width: 176px;
+    height: 176px;
+    border-radius: 10px;
+    border: none;
+  }
+  
+  .active {
+    font-weight: bold;
+  }
+  
