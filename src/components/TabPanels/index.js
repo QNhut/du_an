@@ -12,61 +12,84 @@ import Button from '../Button';
 const tabs = [
   {
     id: 'inlab1',
-    text: 'Dự đoán inlab1',
+    text: 'Dự đoán Inlab1',
     content: <Lab1/>
   },
   {
     id: 'inlab2',
-    text: 'Dự đoán inlab2',
+    text: 'Dự đoán Inlab2',
     content: <Lab2/>
   },
   {
     id: 'inlab3',
-    text: 'Dự đoán inlab3',
+    text: 'Dự đoán Inlab3',
     content: <Lab3/>
   },
   {
     id: 'inlab4',
-    text: 'Dự đoán inlab4',
+    text: 'Dự đoán Inlab4',
     content: <Lab4/>
   }
 ]
 
-function TabPanels() {
+function TabPanels({activeTabLeft}) {
   const [activeTab, setActiveTab] = useState(0);
-
   return (
-    <div>
-    <div className={style.tabContainer}>
-      {tabs.map((tab, index) => (
-        <button
-          key={index}
-       //   className={`${style.tabButton} ${activeTab === index ? style.active : ''}`}
-          className={clsx(
-            style.tabButton,
-            activeTab === index && style.active
-          )}
-          onClick={() => setActiveTab(index)}
+    <>
+      <div 
+        className={clsx(
+          'tab-pane',
+          'fade',
+          'ml-md-2',
+          activeTabLeft === 'tab1'&& 'show active')} 
+        id="tab1"
+      >
+        <h1 className={clsx(
+          style.title,
+          'text-center',
+          'justify-content-center')}
         >
-          {tab.text}
-        </button>
-      ))}
-    </div>
-    <div className={style.tabContent}>
-      {tabs[activeTab].content}
+          Dự đoán điểm theo từng lab
+        </h1>
+        <ul className={clsx(
+            style.tabContainer,
+            "nav nav-tabs"
+        )}>
+          {tabs.map((tab, index) => (
+            <li
+              key={index}
+          //   className={`${style.tabButton} ${activeTab === index ? style.active : ''}`}
+              className={clsx(
+                style.tabButton,
+                "nav-item mt-2 mr-4",
+                activeTab === index && style.active
+              )}
+              onClick={() => setActiveTab(index)}
+            >
+              {tab.text}
+            </li>
+          ))}
+        </ul>
+        <div className={style.tabContent}>
+          {tabs[activeTab].content}
 
-      <PredictionText />
-      {/* BUTTON */}
-      <div className={style.interactionArea}>
-        <Button success>
-          Predict
-        </Button>
-        <Button danger>
-          Reset
-        </Button>
-      </div>
+          <PredictionText />
+          {/* BUTTON */}
+          <div className={style.interactionArea}>
+            <Button success>
+              Predict
+            </Button>
+            <Button danger>
+              Reset
+            </Button>
+          </div>
+        </div>
     </div>
-  </div>
+      <div className={`tab-pane fade ${activeTabLeft === 'tab2' ? 'show active' : ''}`} id="tab2">
+      </div>
+      <div className={`tab-pane fade ${activeTabLeft === 'tab3' ? 'show active' : ''}`} id="tab3">
+      </div>
+    </>
   );
 }
 

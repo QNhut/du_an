@@ -3,37 +3,39 @@ import style from './side-panel.module.css'
 
 const panels = [
   {
-    lab: 'prelab-prediction',
-    isActive: true,
+    id: 'tab1',
     text: 'Dự đoán điểm Inlab theo Prelab',
   },
   {
-    lab: 'last-prediction',
-    isActive: false,
+    id: 'tab2',
     text: 'Dự đoán điểm cuối cùng',
   },
   {
-    lab: 'context-prediction',
-    isActive: false,
+    id: 'tab3',
     text: 'Dự đoán điểm dựa trên ngữ cảnh',
   }
 ]
 
-function SidePanel() {
+
+function SidePanel({ activeTabLeft, setActiveTabLeft }) {
   return (
-    <div className={style.root}>
-      {panels.map((item) => {
-        return (
-          <button key={item.lab} className={clsx(
-            style.item,
-            item.isActive && style.active
-          )}>
+    <>
+      {panels.map((item) => (
+        <li key={item.id} className={clsx('nav-item mx-2 mx-sm-0 mx-md-2 mx-lg-0', style.root)}>
+          <a 
+            className={clsx(
+              style.item,
+              activeTabLeft === item.id && style.active
+            )}
+            onClick={() => setActiveTabLeft(item.id)}
+            href={`#${item.id}`}
+          >
             {item.text}
-          </button>
-        )
-      })}
-    </div>
-  )
+          </a>
+        </li>
+      ))}
+    </>
+  );
 }
 
 export default SidePanel

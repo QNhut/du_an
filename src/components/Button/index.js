@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { memo } from 'react';
 
 import style from './Button.module.scss'
 
@@ -10,6 +11,9 @@ function Button({ primary, success, danger, children}) {
         [style.danger]: danger,
     })
 
+    // console.log("11");
+    
+
     return (
         <button className = {classes}>
             {children}
@@ -17,4 +21,4 @@ function Button({ primary, success, danger, children}) {
     )
 }
 
-export default Button
+export default memo(Button) //Tránh gọi lại component không cần thiết
