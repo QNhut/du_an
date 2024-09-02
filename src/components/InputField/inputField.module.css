@@ -1,0 +1,15 @@
+.inputColorPrelab {
+    background-color: #c5d7fa;
+}
+
+.inputColorPrelab:focus {
+    background-color: #c5d7fa;
+}
+
+.inputColorInlab {
+    background-color: #ffd4d4;  
+}
+
+.inputColorInlab:focus {
+    background-color: #ffd4d4;  
+}

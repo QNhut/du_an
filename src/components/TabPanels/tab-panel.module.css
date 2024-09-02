@@ -1,49 +1,54 @@
 .tabContainer {
-    display: flex;
-    margin-bottom: 10px;
-  }
-  
-  .tabButton {
-    padding: 10px;
-    margin-right: 5px;
-    background-color: #f0f0f0;
-    color: #000;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .tabButton.active {
-    background-color: #007bff;
-    color: #fff;
-  }
-  
-  .tabContent {
-    padding: 10px;
-    border: 1px solid #ccc;
-  }
-  
-  .interactionArea {
-    margin-top: 40px;
-    width: 100%;
-    display: flex;
-    justify-items: center;
-    justify-content: space-evenly;
-    gap: 10px;
-  }
-  
-  .btn {
-    cursor: pointer;
-    padding: 10px 60px;
-    border-radius: 5px;
-    color: black;
-    font-size: 20px;
-    border: none;
-  }
-  
-  .btnPredict {
-    background-color: greenyellow;
-  }
-  
-  .btnReset {
-    background-color: red;
-  }
+  display: flex;
+  margin-bottom: 10px;
+  border: none !important;
+}
+
+.tabButton {
+  padding: 10px;
+  margin-right: 5px;
+  background-color: #cde8ff;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.active {
+  background-color: f6aac4 !important;
+}
+
+.tabButton.active {
+  background-color: #52a6ff;
+  color: #fff;
+}
+
+.tabButton:hover {
+  background-color: #52a6ff;
+  color: #fff;
+}
+
+.tabContent {
+  padding: 10px;
+}
+
+.interactionArea {
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-items: center;
+  justify-content: space-evenly;
+  gap: 10px;
+}
+
+.title {
+  height: 150px;
+  background-color: #F6AAC4;
+  color: #FFF;
+  font-family: 'Segoe UI';
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+
+}

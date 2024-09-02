@@ -1,28 +1,87 @@
+import { useState, memo } from 'react'
+import clsx from 'clsx'
 import style from './inlab.module.css'
+import InputField from '../InputField';
 
-function PrelabItem({ index = 1}) {
+function PrelabItem({ index = 1 , onDataChange}) {
+
+  const nameObject =  `Prelab${index}`;
+
+  const initState = {
+    nameObject: nameObject,
+    dataLab : {
+    maxScore: '', 
+    minScore: '',
+    attempts: '',
+    numberOfQuestion: ''
+  }}
+
+  const [data, setData] = useState(initState)
+  // console.log(data);
+
+  const handleChange = (field) => (e) => {
+    const newData = {
+      ...data,
+      dataLab: {
+        ...data.dataLab,
+        [field]: e.target.value
+      }
+    }
+    setData(newData);
+    onDataChange(newData);
+  };
+  
   return (
-    <div className={style.root}>
+    <div className={clsx(style.root, 'form-control')}>
       <span>Prelab {index}</span>
-      <div className={style.wrapper}>
-        <div className={style.controlPanel}>
-          <label>Điểm cao nhất</label>
-          <input type='number' placeholder="Nhập điểm cao nhất"/>
+      <div className="row">
+        <div className="col-md-6">
+          <InputField
+            label="Điểm cao nhất"
+            id={`Prelab${index}-maxScore`}
+            value={data.dataLab.maxScore}
+            placeholder="Nhập điểm cao nhất"
+            min={0}
+            max={10}
+            onChange={handleChange('maxScore')}
+          />
         </div>
-        <div className={style.controlPanel}>
-          <label>Điểm thấp nhất</label>
-          <input type='number' placeholder="Nhập điểm thấp nhất"/>
+        <div className="col-md-6">
+          <InputField
+            label="Điểm thấp nhất"
+            id={`Prelab${index}-minScore`}
+            value={data.dataLab.minScore}
+            placeholder="Nhập điểm thấp nhất"
+            min={0}
+            max={10}
+            onChange={handleChange('minScore')}
+          />
         </div>
-        <div className={style.controlPanel}>
-          <label>Số lần làm</label>
-          <input type='number' placeholder="Nhập số lần làm"/>
+      </div>
+      <div className={clsx('mt-sm-4', 'row')}>
+        <div className="col-md-6">
+          <InputField
+            label="Số lần làm"
+            id={`Prelab${index}-attempts`}
+            value={data.dataLab.attempts}
+            placeholder="Nhập số lần làm"
+            min={1}
+            onChange={handleChange('attempts')}
+          />
         </div>
-        <div className={style.controlPanel}>
-          <label>Số câu hỏi</label>
-          <input type='number' placeholder="Nhập số câu hỏi"/>
+        <div className="col-md-6">
+          <InputField
+            label="Số câu hỏi"
+            id={`Prelab${index}-numberOfQuestion`}
+            value={data.dataLab.numberOfQuestion}
+            placeholder="Nhập số câu hỏi"
+            min={1}
+            onChange={handleChange('numberOfQuestion')}
+          />
         </div>
       </div>
     </div>
-  )
+  );
 }
-export default PrelabItem
+
+export default memo(PrelabItem);
