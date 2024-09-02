@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import style from './inlab.module.css'
 import InputField from '../InputField';
 
-function InlabItem({ index = 1}) {
+function InlabItem({ index = 1, onDataChange}) {
 
   const nameObject = `Inlab${index}`;
 
@@ -17,16 +17,18 @@ function InlabItem({ index = 1}) {
   }}
 
   const [data, setData] = useState(initState)
-  console.log(data);
+  // console.log(data);
 
   const handleChange = (field) => (e) => {
-    setData({
+    const newData = {
       ...data,
       dataLab: {
         ...data.dataLab,
         [field]: e.target.value
       }
-    });
+    }
+    setData(newData);
+    onDataChange(newData);
   };
 
   return (

@@ -1,16 +1,20 @@
 import { memo } from 'react';
 
-import style from './prediction.module.css'
-
 function PredictionText() {
 
   // console.log("22");
   
 
   return (
-    <div className={style.root}>
-      <label>Kết quả dự đoán</label>
-      <input disabled/>
+    <div className='row'>
+      <div className='col-md-3'>
+        <label className='mb-md-2 mt-lg-2'>Kết quả dự đoán</label>
+      </div>
+      <div className='col-md-6'>
+        <input className='form-control'disabled/>
+      </div>
+      <div className='col-md-3'>
+      </div>
     </div>
   )
 }

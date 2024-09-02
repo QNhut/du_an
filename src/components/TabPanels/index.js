@@ -9,31 +9,53 @@ import Lab4 from "../LabItems/Lab4";
 import PredictionText from "../PredictionText";
 import Button from '../Button';
 
-const tabs = [
-  {
-    id: 'inlab1',
-    text: 'Dự đoán Inlab1',
-    content: <Lab1/>
-  },
-  {
-    id: 'inlab2',
-    text: 'Dự đoán Inlab2',
-    content: <Lab2/>
-  },
-  {
-    id: 'inlab3',
-    text: 'Dự đoán Inlab3',
-    content: <Lab3/>
-  },
-  {
-    id: 'inlab4',
-    text: 'Dự đoán Inlab4',
-    content: <Lab4/>
-  }
-]
 
 function TabPanels({activeTabLeft}) {
+
+  const [dataPredict, setDataPredict] = useState([])
   const [activeTab, setActiveTab] = useState(0);
+
+  const handleData = (newData) => {
+    setDataPredict(prevData => {
+      const existingIndex = prevData.findIndex(item => item.nameObject === newData.nameObject);
+
+      if (existingIndex !== -1) {
+        const updatedData = [...prevData];
+        updatedData[existingIndex] = newData;
+        return updatedData;
+      } else {
+        return [...prevData, newData];
+      }
+    });
+  };
+
+  const handlePredict = () => {
+    console.log(dataPredict);
+  }
+
+  const tabs = [
+    {
+      id: 'inlab1',
+      text: 'Dự đoán Inlab1',
+      content: <Lab1 onDataPredictChange={handleData}/>
+    },
+    {
+      id: 'inlab2',
+      text: 'Dự đoán Inlab2',
+      content: <Lab2 onDataPredictChange={handleData}/>
+    },
+    {
+      id: 'inlab3',
+      text: 'Dự đoán Inlab3',
+      content: <Lab3 onDataPredictChange={handleData}/>
+    },
+    {
+      id: 'inlab4',
+      text: 'Dự đoán Inlab4',
+      content: <Lab4 onDataPredictChange={handleData}/>
+    }
+  ]
+
   return (
     <>
       <div 
@@ -76,7 +98,10 @@ function TabPanels({activeTabLeft}) {
           <PredictionText />
           {/* BUTTON */}
           <div className={style.interactionArea}>
-            <Button success>
+            <Button
+              success
+              onClick={handlePredict}  
+            >
               Predict
             </Button>
             <Button danger>

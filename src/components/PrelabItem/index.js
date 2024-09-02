@@ -3,9 +3,9 @@ import clsx from 'clsx'
 import style from './inlab.module.css'
 import InputField from '../InputField';
 
-function PrelabItem({ index = 1}) {
+function PrelabItem({ index = 1 , onDataChange}) {
 
-  const nameObject = `Prelab${index}`;
+  const nameObject =  `Prelab${index}`;
 
   const initState = {
     nameObject: nameObject,
@@ -17,16 +17,18 @@ function PrelabItem({ index = 1}) {
   }}
 
   const [data, setData] = useState(initState)
-  console.log(data);
+  // console.log(data);
 
   const handleChange = (field) => (e) => {
-    setData({
+    const newData = {
       ...data,
       dataLab: {
         ...data.dataLab,
         [field]: e.target.value
       }
-    });
+    }
+    setData(newData);
+    onDataChange(newData);
   };
   
   return (
@@ -56,7 +58,7 @@ function PrelabItem({ index = 1}) {
           />
         </div>
       </div>
-      <div className="row mt-sm-4">
+      <div className={clsx('mt-sm-4', 'row')}>
         <div className="col-md-6">
           <InputField
             label="Số lần làm"

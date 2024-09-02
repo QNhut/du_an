@@ -2,13 +2,16 @@
   color: #000000 !important; 
   background-color: #E8EBED;
 }
+
+.root {
+  border: none !important;
+}
 .item {
   display: flex;
   font-size: 18px;
   font-family: ui-sans-serif,system-ui,sans-serif;
   text-align: center;
   align-items: center;
-  /* background-color: #E8EBED; */
   color: #585858 !important;
   width: 176px;
   height: 176px;

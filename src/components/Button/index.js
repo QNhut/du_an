@@ -3,7 +3,7 @@ import { memo } from 'react';
 
 import style from './Button.module.scss'
 
-function Button({ primary, success, danger, children}) {
+function Button({ primary, success, danger, children, onClick}) {
     
     const classes = clsx(style.btn, {
         [style.primary]: primary,
@@ -11,11 +11,11 @@ function Button({ primary, success, danger, children}) {
         [style.danger]: danger,
     })
 
-    // console.log("11");
-    
-
     return (
-        <button className = {classes}>
+        <button
+            className = {classes}
+            onClick = {onClick}
+        >
             {children}
         </button>
     )
