@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom"
 import clsx from "clsx"
-import Button from "../PredictPage/Button/Button"
 import logoIUH from '../../images/Logo.png'
 import PeopleLogin from '../../images/people-login.png'
 import style from './homepage.module.css'
 
 
 function HomePage() {
-    <img></img>
     return (
         <div className={clsx("container-fluid", style.root)}>
             <div className="row">
@@ -33,16 +31,16 @@ function HomePage() {
                         <form action="">
                             <div className="row">
                                 <div className="col-md-12">
-                                    <label  className='mb-2' for="txtUsername">Tài khoản</label>
+                                    <label  className='mb-2' htmlFor="txtUsername">Tài khoản</label>
                                     <input type='text' className="form-control"></input>
                                 </div>
                             </div>
                             <div className="row mt-4">
                                 <div className="col-md-12">
-                                    <label  className='mb-2' for="txtUsername">Mật khẩu</label>
+                                    <label  className='mb-2' htmlFor="txtUsername">Mật khẩu</label>
                                     <input  type='password' className="form-control"></input>
                                     <div className="text-end">
-                                        <a href="#" className={clsx(
+                                        <a href="/" className={clsx(
                                             style.forgetPassword
                                         )}>Quên mật khẩu?</a>
                                     </div>
@@ -51,7 +49,7 @@ function HomePage() {
                             <div className="row mt-4">
                                 <div className="col-lg-6">
                                     <div className="mt-lg-2 mt-md-0">
-                                        <a href="#" className={clsx(
+                                        <a href="/" className={clsx(
                                             style.forgetPassword)}
                                         >
                                             Tạo tài khoản mới

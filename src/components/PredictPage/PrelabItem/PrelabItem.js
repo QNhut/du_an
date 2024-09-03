@@ -1,31 +1,51 @@
-import { useState, memo } from 'react'
+import { useState, memo, useEffect, useMemo } from 'react'
 import clsx from 'clsx'
 import style from './inlab.module.css'
 import InputField from '../InputField/InputField';
 
-function PrelabItem({ index = 1 , onDataChange}) {
+function PrelabItem({ index = 1 , onDataChange, onReset, setReset}) {
 
   const nameObject =  `Prelab${index}`;
 
-  const initState = {
+  const initState = useMemo(() => ({
     nameObject: nameObject,
-    dataLab : {
-    maxScore: '', 
-    minScore: '',
-    attempts: '',
-    numberOfQuestion: ''
-  }}
+    maxScore: "", 
+    minScore: "",
+    attempts: "",
+    numberOfQuestion: ""
+  }), [nameObject])
+
+  useEffect(() => {
+    if(onReset) {
+      setData(initState);
+      setReset(false)
+    }
+  }, [onReset, initState, setReset])
 
   const [data, setData] = useState(initState)
   // console.log(data);
 
   const handleChange = (field) => (e) => {
+    var value
+    if(e.target.value.trim() === "") {
+      value = ""
+    }
+    else {
+      if (field === 'maxScore' || field === 'minScore') {
+        value = parseFloat(e.target.value)
+        if(value === isNaN)
+          value = ""
+      }
+      if (field === 'attempts' || field === 'numberOfQuestion') {
+        value = parseInt(e.target.value)
+        if(value === isNaN)
+          value = ""
+      }
+    }
+    
     const newData = {
       ...data,
-      dataLab: {
-        ...data.dataLab,
-        [field]: e.target.value
-      }
+      [field]: value
     }
     setData(newData);
     onDataChange(newData);
@@ -39,7 +59,7 @@ function PrelabItem({ index = 1 , onDataChange}) {
           <InputField
             label="Điểm cao nhất"
             id={`Prelab${index}-maxScore`}
-            value={data.dataLab.maxScore}
+            value={data.maxScore}
             placeholder="Nhập điểm cao nhất"
             min={0}
             max={10}
@@ -50,7 +70,7 @@ function PrelabItem({ index = 1 , onDataChange}) {
           <InputField
             label="Điểm thấp nhất"
             id={`Prelab${index}-minScore`}
-            value={data.dataLab.minScore}
+            value={data.minScore}
             placeholder="Nhập điểm thấp nhất"
             min={0}
             max={10}
@@ -63,7 +83,7 @@ function PrelabItem({ index = 1 , onDataChange}) {
           <InputField
             label="Số lần làm"
             id={`Prelab${index}-attempts`}
-            value={data.dataLab.attempts}
+            value={data.attempts}
             placeholder="Nhập số lần làm"
             min={1}
             onChange={handleChange('attempts')}
@@ -73,7 +93,7 @@ function PrelabItem({ index = 1 , onDataChange}) {
           <InputField
             label="Số câu hỏi"
             id={`Prelab${index}-numberOfQuestion`}
-            value={data.dataLab.numberOfQuestion}
+            value={data.numberOfQuestion}
             placeholder="Nhập số câu hỏi"
             min={1}
             onChange={handleChange('numberOfQuestion')}

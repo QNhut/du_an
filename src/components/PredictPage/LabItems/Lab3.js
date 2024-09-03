@@ -1,28 +1,19 @@
-import { useState } from "react";
 import InlabItem from "../InlabItem/InlabItem";
 import PrelabItem from "../PrelabItem/PrelabItem";
 
-function Lab3({ onDataPredictChange}) {
-  
-  const [dataSend, setDataSend] = useState([])
+function Lab3({ onDataPredictChange, onReset , setReset }) {
 
   const handleDataChange = (newData) => {
-    setDataSend(newData);
-
     onDataPredictChange(newData);
   };
 
-  // useEffect(() => {
-  //   console.log(dataSend);
-  // }, [dataSend]);
-
   return (
     <>
-      <PrelabItem onDataChange={handleDataChange}/>
-      <InlabItem onDataChange={handleDataChange}/>
-      <PrelabItem index={2} onDataChange={handleDataChange}/>
-      <InlabItem index={2} onDataChange={handleDataChange}/>
-      <PrelabItem index={3} onDataChange={handleDataChange}/>
+      <PrelabItem onDataChange={handleDataChange} onReset={onReset} setReset = {setReset}/>
+      <InlabItem onDataChange={handleDataChange} onReset={onReset} setReset = {setReset}/>
+      <PrelabItem index={2} onDataChange={handleDataChange} onReset={onReset} setReset = {setReset}/>
+      <InlabItem index={2} onDataChange={handleDataChange} onReset={onReset} setReset = {setReset}/>
+      <PrelabItem index={3} onDataChange={handleDataChange} onReset={onReset} setReset = {setReset}/>
   </>
   )
 }

@@ -1,22 +1,13 @@
-import { useState } from "react";
 import PrelabItem from "../PrelabItem/PrelabItem";
 
-function Lab1({ onDataPredictChange }) {
-
-  const [dataSend, setDataSend] = useState([])
+function Lab1({ onDataPredictChange, onReset , setReset }) {
 
   const handleDataChange = (newData) => {
-    setDataSend(newData);
-
     onDataPredictChange(newData);
   };
 
-  // useEffect(() => {
-  //   console.log(dataSend);
-  // }, [dataSend]);
-
   return (
-    <PrelabItem onDataChange={handleDataChange}/>
+    <PrelabItem onDataChange={handleDataChange} onReset={onReset} setReset = {setReset}/>
   )
 }
 export default Lab1

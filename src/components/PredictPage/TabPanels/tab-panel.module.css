@@ -52,3 +52,27 @@
   border-radius: 20px;
 
 }
+
+.btnPredict {
+  color:#fff !important;
+  background-color:#28a745 !important;
+  border-color:#28a745 !important;
+}
+
+.btnPredict:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+
+.btnReset {
+  color:#fff;
+  background-color:#dc3545 !important;
+  border-color:#dc3545 !important;
+}
+
+
+.btnReset:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
