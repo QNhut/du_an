@@ -1,11 +1,11 @@
 import { useState, useMemo, useEffect } from 'react';
 import clsx from 'clsx';
-import style from './inlab.module.css'
+import style from './inputitem.module.css'
 import InputField from '../InputField/InputField';
 
-function InlabItem({ index = 1, onDataChange, onReset, setReset}) {
+function InputItem({ index = 1, onDataChange, onReset, setReset, lab}) {
 
-  const nameObject = `Inlab${index}`;
+  const nameObject = `${lab}${index}`;
 
   const initState = useMemo(() => ({
     nameObject: nameObject,
@@ -35,11 +35,20 @@ function InlabItem({ index = 1, onDataChange, onReset, setReset}) {
         value = parseFloat(e.target.value)
         if(value === isNaN)
           value = ""
+        if(value >= 10) {
+          value = 10
+        }
+        if(value < 0) {
+          value = 0
+        }
       }
       if (field === 'attempts' || field === 'numberOfQuestion') {
         value = parseInt(e.target.value)
         if(value === isNaN)
           value = ""
+        if(value < 1) {
+          value = 1
+        }
       }
     }
     
@@ -53,12 +62,12 @@ function InlabItem({ index = 1, onDataChange, onReset, setReset}) {
 
   return (
     <div className={clsx(style.root, 'form-control')}>
-      <span>Inlab {index}</span>
+      <span>{lab} {index}</span>
       <div className='row'>
         <div className="col-md-6">
           <InputField
             label="Điểm cao nhất"
-            id={`Inlab${index}-maxScore`}
+            id={`${lab}${index}-maxScore`}
             value={data.maxScore}
             placeholder="Nhập điểm cao nhất"
             min={0}
@@ -69,7 +78,7 @@ function InlabItem({ index = 1, onDataChange, onReset, setReset}) {
         <div className="col-md-6">
           <InputField
             label="Điểm thấp nhất"
-            id={`Inlab${index}-minScore`}
+            id={`${lab}${index}-minScore`}
             value={data.minScore}
             placeholder="Nhập điểm thấp nhất"
             min={0}
@@ -82,7 +91,7 @@ function InlabItem({ index = 1, onDataChange, onReset, setReset}) {
           <div className="col-md-6">
             <InputField
               label="Số lần làm"
-              id={`Inlab${index}-attempts`}
+              id={`${lab}${index}-attempts`}
               value={data.attempts}
               placeholder="Nhập số lần làm"
               min={1}
@@ -92,7 +101,7 @@ function InlabItem({ index = 1, onDataChange, onReset, setReset}) {
           <div className="col-md-6">
             <InputField
               label="Số câu hỏi"
-              id={`Inlab${index}-numberOfQuestion`}
+              id={`${lab}${index}-numberOfQuestion`}
               value={data.numberOfQuestion}
               placeholder="Nhập số câu hỏi"
               min={1}
@@ -103,4 +112,4 @@ function InlabItem({ index = 1, onDataChange, onReset, setReset}) {
     </div>
   )
 }
-export default InlabItem
+export default InputItem

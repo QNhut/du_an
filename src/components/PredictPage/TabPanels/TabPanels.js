@@ -2,10 +2,7 @@ import { useState } from "react";
 
 import style from './tab-panel.module.css';
 import clsx from "clsx";
-import Lab1 from "../LabItems/Lab1";
-import Lab2 from "../LabItems/Lab2";
-import Lab3 from "../LabItems/Lab3";
-import Lab4 from "../LabItems/Lab4";
+import Lab from "../LabItems/Lab";
 import PredictionText from "../PredictionText/PredictionText";
 
 
@@ -34,8 +31,6 @@ function TabPanels({activeTabLeft}) {
     let flag = 1
     for (var i = 0; i< inputs.length ; i++) {
       if(inputs[i].value === "") {
-        console.log(inputs[i].value);
-        
         flag = 0
         break
       }
@@ -57,22 +52,22 @@ function TabPanels({activeTabLeft}) {
     {
       id: 'inlab1',
       text: 'Dự đoán Inlab1',
-      content: <Lab1 onDataPredictChange={handleData} onReset = {reset} setReset={setReset}/>
+      content: <Lab onDataPredictChange={handleData} onReset = {reset} setReset={setReset}/>
     },
     {
       id: 'inlab2',
       text: 'Dự đoán Inlab2',
-      content: <Lab2 onDataPredictChange={handleData} onReset = {reset} setReset={setReset}/>
+      content: <Lab onDataPredictChange={handleData} onReset = {reset} setReset={setReset} index={2}/>
     },
     {
       id: 'inlab3',
       text: 'Dự đoán Inlab3',
-      content: <Lab3 onDataPredictChange={handleData} onReset = {reset} setReset={setReset}/>
+      content: <Lab onDataPredictChange={handleData} onReset = {reset} setReset={setReset} index={3}/>
     },
     {
       id: 'inlab4',
       text: 'Dự đoán Inlab4',
-      content: <Lab4 onDataPredictChange={handleData} onReset = {reset} setReset={setReset}/>
+      content: <Lab onDataPredictChange={handleData} onReset = {reset} setReset={setReset} index={4}/>
     }
   ]
 
@@ -106,7 +101,10 @@ function TabPanels({activeTabLeft}) {
                 "nav-item mt-2 mr-4",
                 activeTab === index && style.active
               )}
-              onClick={() => setActiveTab(index)}
+              onClick={() => {
+                handleReset()
+                setActiveTab(index)
+              }}
             >
               {tab.text}
             </li>
