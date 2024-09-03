@@ -1,20 +1,15 @@
-import Header from './Header';
+import { Route, Routes } from 'react-router'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Body from './Body';
-import Footer from './Footer'
+import PredictPage from './PredictPage/PredictPage';
+import HomePage from './HomePage/HomePage';
 
 function App() {
   return (
     <>
-      <div className="container-fluid">
-        <Header />
-      </div>
-      <div className="container">
-        <Body />
-      </div>
-      <div className="container-fluid">
-        <Footer />
-      </div>
+      <Routes>
+        <Route path='/' element={<HomePage />}/>
+        <Route path='/predict-page' element={<PredictPage />}/>
+      </Routes>
     </>
   );
 }

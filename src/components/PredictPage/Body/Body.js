@@ -1,8 +1,8 @@
 import { useState } from "react";
 import clsx from "clsx";
 
-import SidePanel from '../SidePanel';
-import TabPanels from '../TabPanels';
+import SidePanel from '../SidePanel/SidePanel';
+import TabPanels from '../TabPanels/TabPanels';
 import style from './body.module.css'
 
 function Body() {

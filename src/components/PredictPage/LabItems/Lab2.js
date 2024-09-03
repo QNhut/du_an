@@ -1,6 +1,6 @@
 import { useState } from "react";
-import InlabItem from "../InlabItem";
-import PrelabItem from "../PrelabItem";
+import InlabItem from "../InlabItem/InlabItem";
+import PrelabItem from "../PrelabItem/PrelabItem";
 
 function Lab2({ onDataPredictChange}) {
   

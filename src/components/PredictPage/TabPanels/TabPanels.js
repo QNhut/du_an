@@ -6,8 +6,8 @@ import Lab1 from "../LabItems/Lab1";
 import Lab2 from "../LabItems/Lab2";
 import Lab3 from "../LabItems/Lab3";
 import Lab4 from "../LabItems/Lab4";
-import PredictionText from "../PredictionText";
-import Button from '../Button';
+import PredictionText from "../PredictionText/PredictionText";
+import Button from '../Button/Button';
 
 
 function TabPanels({activeTabLeft}) {

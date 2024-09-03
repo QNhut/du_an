@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import clsx from 'clsx';
 import style from './inlab.module.css'
-import InputField from '../InputField';
+import InputField from '../InputField/InputField';
 
 function InlabItem({ index = 1, onDataChange}) {
 
