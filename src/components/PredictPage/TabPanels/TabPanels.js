@@ -2,18 +2,15 @@ import { useState } from "react";
 
 import style from './tab-panel.module.css';
 import clsx from "clsx";
-import Lab1 from "../LabItems/Lab1";
-import Lab2 from "../LabItems/Lab2";
-import Lab3 from "../LabItems/Lab3";
-import Lab4 from "../LabItems/Lab4";
-import PredictionText from "../PredictionText";
-import Button from '../Button';
+import Lab from "../LabItems/Lab";
+import PredictionText from "../PredictionText/PredictionText";
 
 
 function TabPanels({activeTabLeft}) {
 
   const [dataPredict, setDataPredict] = useState([])
   const [activeTab, setActiveTab] = useState(0);
+  const [reset, setReset] = useState(false)
 
   const handleData = (newData) => {
     setDataPredict(prevData => {
@@ -29,30 +26,48 @@ function TabPanels({activeTabLeft}) {
     });
   };
 
-  const handlePredict = () => {
-    console.log(dataPredict);
+  const handlePredict = (e) => {
+    const inputs = document.querySelectorAll('input[required]');
+    let flag = 1
+    for (var i = 0; i< inputs.length ; i++) {
+      if(inputs[i].value === "") {
+        flag = 0
+        break
+      }
+    }
+    if(flag === 0) {
+      alert("Bạn phải nhập đầy đủ thông tin và không có trường nào là chữ")
+    }
+    else {
+      console.log(dataPredict);
+    }
+  }
+
+  const handleReset = () => {
+    setReset(true)
+    setDataPredict([])
   }
 
   const tabs = [
     {
       id: 'inlab1',
       text: 'Dự đoán Inlab1',
-      content: <Lab1 onDataPredictChange={handleData}/>
+      content: <Lab onDataPredictChange={handleData} onReset = {reset} setReset={setReset}/>
     },
     {
       id: 'inlab2',
       text: 'Dự đoán Inlab2',
-      content: <Lab2 onDataPredictChange={handleData}/>
+      content: <Lab onDataPredictChange={handleData} onReset = {reset} setReset={setReset} index={2}/>
     },
     {
       id: 'inlab3',
       text: 'Dự đoán Inlab3',
-      content: <Lab3 onDataPredictChange={handleData}/>
+      content: <Lab onDataPredictChange={handleData} onReset = {reset} setReset={setReset} index={3}/>
     },
     {
       id: 'inlab4',
       text: 'Dự đoán Inlab4',
-      content: <Lab4 onDataPredictChange={handleData}/>
+      content: <Lab onDataPredictChange={handleData} onReset = {reset} setReset={setReset} index={4}/>
     }
   ]
 
@@ -86,7 +101,10 @@ function TabPanels({activeTabLeft}) {
                 "nav-item mt-2 mr-4",
                 activeTab === index && style.active
               )}
-              onClick={() => setActiveTab(index)}
+              onClick={() => {
+                handleReset()
+                setActiveTab(index)
+              }}
             >
               {tab.text}
             </li>
@@ -98,15 +116,24 @@ function TabPanels({activeTabLeft}) {
           <PredictionText />
           {/* BUTTON */}
           <div className={style.interactionArea}>
-            <Button
-              success
-              onClick={handlePredict}  
+            <button 
+              className={clsx(
+                style.btnPredict,
+                "btn btn-success"
+              )}
+              onClick={handlePredict}
             >
               Predict
-            </Button>
-            <Button danger>
+            </button>
+            <button 
+              className={clsx(
+                style.btnReset,
+                "btn btn-danger"
+              )}
+              onClick={handleReset}
+            >
               Reset
-            </Button>
+            </button>
           </div>
         </div>
     </div>

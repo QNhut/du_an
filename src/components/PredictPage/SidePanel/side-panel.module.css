@@ -17,9 +17,9 @@
   height: 176px;
   border-radius: 50px !important;
   margin-top: 20px;
-  border: none !important;
   text-decoration: none;
 }
+
 
 .item:hover {
   border: none !important;

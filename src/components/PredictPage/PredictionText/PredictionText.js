@@ -1,10 +1,7 @@
 import { memo } from 'react';
 
+
 function PredictionText() {
-
-  // console.log("22");
-  
-
   return (
     <div className='row'>
       <div className='col-md-3'>

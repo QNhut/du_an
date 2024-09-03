@@ -19,6 +19,7 @@ function InputField({ label, id, value, placeholder, min, max, onChange }) {
             min={min}
             max={max}
             onChange={onChange}
+            required
           />
         </div>
       </div>

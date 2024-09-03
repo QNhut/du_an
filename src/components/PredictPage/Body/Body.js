@@ -1,8 +1,8 @@
 import { useState } from "react";
 import clsx from "clsx";
 
-import SidePanel from '../SidePanel';
-import TabPanels from '../TabPanels';
+import SidePanel from '../SidePanel/SidePanel';
+import TabPanels from '../TabPanels/TabPanels';
 import style from './body.module.css'
 
 function Body() {
@@ -12,7 +12,7 @@ function Body() {
     return (
       <div className="row">
         <div className="col-lg-2 col-md-3 col-sm-4 col-12">
-          <ul className={clsx("nav nav-tabs text-center justify-content-center")}>
+          <ul className={clsx("nav text-center justify-content-center")}>
             <SidePanel activeTabLeft={activeTabLeft} setActiveTabLeft={setActiveTabLeft} />
           </ul>
         </div>
