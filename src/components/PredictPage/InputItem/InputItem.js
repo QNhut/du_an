@@ -1,13 +1,17 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import clsx from 'clsx';
+
+import { useStore, actions } from '../../../store';
 import style from './inputitem.module.css'
 import InputField from '../InputField/InputField';
 
-function InputItem({ index = 1, onDataChange, onReset, setReset, lab}) {
+function InputItem({ index = 1, lab}) {
 
   const nameObject = `${lab}${index}`;
 
-  const initState = useMemo(() => ({
+  const [state, dispath] = useStore()
+
+  const initData = useMemo(() => ({
     nameObject: nameObject,
     maxScore: "", 
     minScore: "",
@@ -15,15 +19,14 @@ function InputItem({ index = 1, onDataChange, onReset, setReset, lab}) {
     numberOfQuestion: ""
   }), [nameObject])
 
-  useEffect(() => {
-    if(onReset) {
-      setData(initState);
-      setReset(false)
-    }
-  }, [onReset, initState, setReset])
+  const [inputData, setInputData] = useState(initData)
 
-  const [data, setData] = useState(initState)
-  // console.log(data);
+  useEffect(() => {
+    if(state.reset) {
+      setInputData(initData)
+      dispath(actions.setReset(false))
+    }
+  }, [state.reset, initData, dispath])
 
   const handleChange = (field) => (e) => {
     var value
@@ -53,22 +56,22 @@ function InputItem({ index = 1, onDataChange, onReset, setReset, lab}) {
     }
     
     const newData = {
-      ...data,
+      ...inputData,
       [field]: value
     }
-    setData(newData);
-    onDataChange(newData);
+    setInputData(newData)
+    dispath(actions.setDataPredict(newData))
   };
 
   return (
     <div className={clsx(style.root, 'form-control')}>
-      <span>{lab} {index}</span>
+      <span>{lab}{index}</span>
       <div className='row'>
         <div className="col-md-6">
           <InputField
             label="Điểm cao nhất"
             id={`${lab}${index}-maxScore`}
-            value={data.maxScore}
+            value={inputData.maxScore}
             placeholder="Nhập điểm cao nhất"
             min={0}
             max={10}
@@ -79,7 +82,7 @@ function InputItem({ index = 1, onDataChange, onReset, setReset, lab}) {
           <InputField
             label="Điểm thấp nhất"
             id={`${lab}${index}-minScore`}
-            value={data.minScore}
+            value={inputData.minScore}
             placeholder="Nhập điểm thấp nhất"
             min={0}
             max={10}
@@ -92,7 +95,7 @@ function InputItem({ index = 1, onDataChange, onReset, setReset, lab}) {
             <InputField
               label="Số lần làm"
               id={`${lab}${index}-attempts`}
-              value={data.attempts}
+              value={inputData.attempts}
               placeholder="Nhập số lần làm"
               min={1}
               onChange={handleChange('attempts')}
@@ -102,7 +105,7 @@ function InputItem({ index = 1, onDataChange, onReset, setReset, lab}) {
             <InputField
               label="Số câu hỏi"
               id={`${lab}${index}-numberOfQuestion`}
-              value={data.numberOfQuestion}
+              value={inputData.numberOfQuestion}
               placeholder="Nhập số câu hỏi"
               min={1}
               onChange={handleChange('numberOfQuestion')}

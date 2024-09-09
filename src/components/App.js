@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import PredictPage from './PredictPage/PredictPage';
 import HomePage from './HomePage/HomePage';
 

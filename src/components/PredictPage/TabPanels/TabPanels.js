@@ -4,27 +4,17 @@ import style from './tab-panel.module.css';
 import clsx from "clsx";
 import Lab from "../LabItems/Lab";
 import PredictionText from "../PredictionText/PredictionText";
+import { useStore, actions } from "../../../store";
 
 
 function TabPanels({activeTabLeft}) {
 
-  const [dataPredict, setDataPredict] = useState([])
+  const [state, dispath] = useStore()
   const [activeTab, setActiveTab] = useState(0);
-  const [reset, setReset] = useState(false)
 
-  const handleData = (newData) => {
-    setDataPredict(prevData => {
-      const existingIndex = prevData.findIndex(item => item.nameObject === newData.nameObject);
-
-      if (existingIndex !== -1) {
-        const updatedData = [...prevData];
-        updatedData[existingIndex] = newData;
-        return updatedData;
-      } else {
-        return [...prevData, newData];
-      }
-    });
-  };
+  // const handleData = (newData) => {
+  //   dispath(actions.setDataPredict(newData))
+  // };
 
   const handlePredict = (e) => {
     const inputs = document.querySelectorAll('input[required]');
@@ -39,35 +29,50 @@ function TabPanels({activeTabLeft}) {
       alert("Bạn phải nhập đầy đủ thông tin và không có trường nào là chữ")
     }
     else {
-      console.log(dataPredict);
+      console.log(state.dataPredict)  
+      fetch('http://localhost:8000/api/inlab/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+          body: JSON.stringify(state.dataPredict)
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+          dispath(actions.setPredictedValue(data))
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+      }
     }
-  }
 
   const handleReset = () => {
-    setReset(true)
-    setDataPredict([])
+    dispath(actions.setReset(true))
+    dispath(actions.setDataPredict("clear"))
   }
 
   const tabs = [
     {
       id: 'inlab1',
       text: 'Dự đoán Inlab1',
-      content: <Lab onDataPredictChange={handleData} onReset = {reset} setReset={setReset}/>
+      content: <Lab/>
     },
     {
       id: 'inlab2',
       text: 'Dự đoán Inlab2',
-      content: <Lab onDataPredictChange={handleData} onReset = {reset} setReset={setReset} index={2}/>
+      content: <Lab index={2}/>
     },
     {
       id: 'inlab3',
       text: 'Dự đoán Inlab3',
-      content: <Lab onDataPredictChange={handleData} onReset = {reset} setReset={setReset} index={3}/>
+      content: <Lab index={3}/>
     },
     {
       id: 'inlab4',
       text: 'Dự đoán Inlab4',
-      content: <Lab onDataPredictChange={handleData} onReset = {reset} setReset={setReset} index={4}/>
+      content: <Lab index={4}/>
     }
   ]
 
@@ -90,30 +95,38 @@ function TabPanels({activeTabLeft}) {
         </h1>
         <ul className={clsx(
             style.tabContainer,
-            "nav nav-tabs"
+            "nav nav-tabs row"
         )}>
           {tabs.map((tab, index) => (
-            <li
-              key={index}
-          //   className={`${style.tabButton} ${activeTab === index ? style.active : ''}`}
-              className={clsx(
-                style.tabButton,
-                "nav-item mt-2 mr-4",
-                activeTab === index && style.active
-              )}
-              onClick={() => {
-                handleReset()
-                setActiveTab(index)
-              }}
-            >
-              {tab.text}
-            </li>
+            <div className="col-lg-3 col-md-6">
+              <li
+                key={index}
+            //   className={`${style.tabButton} ${activeTab === index ? style.active : ''}`}
+                className={clsx(
+                  index === 0 && style.tabButton1,
+                  index === 1 && style.tabButton2,
+                  index === 2 && style.tabButton3,
+                  index === 3 && style.tabButton4,
+                  "nav-item mt-2",
+                  style.tabButton,
+                  activeTab === index && style.active
+                )}
+                onClick={() => {
+                  handleReset()
+                  console.log(index);
+                  
+                  setActiveTab(index)
+                }}
+              >
+                {tab.text}
+              </li>
+            </div>
           ))}
         </ul>
         <div className={style.tabContent}>
           {tabs[activeTab].content}
 
-          <PredictionText />
+          <PredictionText/>
           {/* BUTTON */}
           <div className={style.interactionArea}>
             <button 

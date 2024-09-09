@@ -6,28 +6,138 @@
 
 .tabButton {
   padding: 10px;
-  margin-right: 5px;
-  background-color: #cde8ff;
-  color: #000;
   border: none;
   cursor: pointer;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  /* width: 230px; */
+  position: relative;
+  text-align: center;
 }
 
-.active {
-  background-color: f6aac4 !important;
+.tabButton1 {
+  background-color: #D1FADF;
+  color: #075133;
+  border-radius: 30px 0 0 30px;
 }
 
-.tabButton.active {
-  background-color: #52a6ff;
-  color: #fff;
+.tabButton1::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -12px;
+  border-left: 12px solid #D1FADF;
+  border-top: 23px solid transparent;
+  border-bottom: 23px solid transparent;
 }
 
-.tabButton:hover {
-  background-color: #52a6ff;
-  color: #fff;
+
+.tabButton2 {
+  background-color: #FEF0C7;
+  color: #7C3314;
 }
+
+.tabButton2::after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  right: -12px;
+  border-left: 13px solid #FEF0C7;
+  border-top: 23px solid transparent;
+  border-bottom: 23px solid transparent;
+
+}
+
+.tabButton2::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0;
+  border-left: 13px solid #fff;
+  border-top: 23px solid transparent;
+  border-bottom: 23px solid transparent;
+}
+
+.tabButton3 {
+  background-color: #FEE4E2;
+  color: #6E1507;
+}
+
+.tabButton3::after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  right: -12px;
+  border-left: 13px solid #FEE4E2;
+  border-top: 23px solid transparent;
+  border-bottom: 23px solid transparent;
+
+}
+
+.tabButton3::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0;
+  border-left: 13px solid #fff;
+  border-top: 23px solid transparent;
+  border-bottom: 23px solid transparent;
+}
+
+.tabButton4 {
+  background-color: #F2F4F7;
+  color: #0D1627;
+  border-radius: 0 30px 30px 0;
+}
+
+
+.tabButton4::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0;
+  border-left: 13px solid #fff;
+  border-top: 23px solid transparent;
+  border-bottom: 23px solid transparent;
+}
+
+@media (min-width: 1200px) {
+  .tabButton2::before, .tabButton3::before, .tabButton4::before {
+    display:block;
+  }
+}
+
+@media (max-width: 993px) {
+  .tabButton3::before, .tabButton2::after {
+    display: none;
+  }
+  .tabButton3 {
+    border-radius: 30px 0 0 30px;
+  }
+  .tabButton2 {
+    border-radius: 0 30px 30px 0;
+  }
+}
+
+@media (max-width: 769px) {
+  .tabButton2::before, .tabButton3::before, .tabButton4::before, .tabButton1::after, .tabButton3::after{
+    display: none;
+  }
+  .tabButton {
+    border-radius: 30px
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .tabContent {
   padding: 10px;
