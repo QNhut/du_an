@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import style from './inputField.module.css'
+import style from './InputField.module.css'
 
-function InputField({ label, id, value, placeholder, min, max, onChange }) {
+function InputField({ label, id, value, placeholder, min, max, onChange, name }) {
     return (
       <div className="row mb-4">
         <div className="col-md-5 col-sm-4 col-lg-4">
@@ -16,6 +16,7 @@ function InputField({ label, id, value, placeholder, min, max, onChange }) {
             className={clsx('form-control', (id.slice(0, 1) === 'P' && style.inputColorPrelab) || (id.slice(0, 1) === 'I' && style.inputColorInlab))}
             placeholder={placeholder}
             value={value}
+            name={name}
             min={min}
             max={max}
             onChange={onChange}

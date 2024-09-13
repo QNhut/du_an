@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import clsx from "clsx"
 import logoIUH from '../../images/Logo.png'
 import PeopleLogin from '../../images/people-login.png'
-import style from './homepage.module.css'
+import style from './Login.module.css'
 
 
 function HomePage() {

@@ -1,0 +1,269 @@
+.frameButton {
+    margin-left: 0px;
+}
+
+.tabContainer {
+    margin-bottom: 10px;
+    border: none !important;
+}
+
+.tabButton {
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+}
+
+.tabButton1 {
+    background-color: #D1FADF;
+    color: #075133;
+    border-radius: 30px 0 0 30px;
+}
+
+.tabButton1.active {
+    background-color: #1cd98d;
+    color: #ffffff;
+}
+
+.active.tabButton1::after {
+    border-left: 12px solid #1cd98d;
+}
+
+.tabButton1::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -12px;
+    border-left: 12px solid #D1FADF;
+    border-top: 23px solid transparent;
+    border-bottom: 23px solid transparent;
+}
+
+.tabButton1:hover {
+    background-color: #1cd98d;
+    color: #ffffff;
+}
+
+.tabButton1:hover::after {
+    border-left: 12px solid #1cd98d;
+}
+
+
+.tabButton2 {
+    background-color: #FEF0C7;
+    color: #7C3314;
+}
+
+.tabButton2.active {
+    background-color: #f4e47d;
+    color: #ffffff;
+}
+
+.active.tabButton2::after {
+    border-left: 12px solid #f4e47d;
+}
+
+.tabButton2::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: -12px;
+    border-left: 13px solid #FEF0C7;
+    border-top: 23px solid transparent;
+    border-bottom: 23px solid transparent;
+
+}
+
+.tabButton2::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0;
+    border-left: 13px solid #EEF5FF;
+    border-top: 23px solid transparent;
+    border-bottom: 23px solid transparent;
+}
+
+.tabButton2:hover {
+    background-color: #f4e47d;
+    color: #ffffff;
+}
+
+.tabButton2:hover::after {
+    border-left: 12px solid #f4e47d;
+}
+
+.tabButton3 {
+    background-color: #FEE4E2;
+    color: #6E1507;
+}
+
+.tabButton3.active {
+    background-color: #ffb4af;
+    color: #ffffff;
+}
+
+.active.tabButton3::after {
+    border-left: 12px solid #ffb4af;
+}
+
+.tabButton3::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: -12px;
+    border-left: 13px solid #FEE4E2;
+    border-top: 23px solid transparent;
+    border-bottom: 23px solid transparent;
+
+}
+
+.tabButton3::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0;
+    border-left: 13px solid #EEF5FF;
+    border-top: 23px solid transparent;
+    border-bottom: 23px solid transparent;
+}
+
+.tabButton3:hover {
+    background-color: #ffb4af;
+    color: #ffffff;
+}
+
+.tabButton3:hover::after {
+    border-left: 12px solid #ffb4af;
+}
+
+.tabButton4 {
+    background-color: #bcd7ff;
+    color: #0D1627;
+    border-radius: 0 30px 30px 0;
+}
+
+.tabButton4.active {
+    background-color: #7fb2ff;
+    color: #ffffff;
+}
+
+.tabButton4::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0;
+    border-left: 13px solid #EEF5FF;
+    border-top: 23px solid transparent;
+    border-bottom: 23px solid transparent;
+}
+
+.tabButton4:hover {
+    background-color: #7fb2ff;
+    color: #ffffff;
+}
+
+@media (min-width: 1200px) {
+
+    .tabButton2::before,
+    .tabButton3::before,
+    .tabButton4::before {
+        display: block;
+    }
+}
+
+@media (max-width: 993px) {
+
+    .tabButton3::before,
+    .tabButton2::after {
+        display: none;
+    }
+
+    .tabButton3 {
+        border-radius: 30px 0 0 30px;
+    }
+
+    .tabButton2 {
+        border-radius: 0 30px 30px 0;
+    }
+
+    .footerTemp {
+        height: 120px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 769px) {
+
+    .tabButton2::before,
+    .tabButton3::before,
+    .tabButton4::before,
+    .tabButton1::after,
+    .tabButton3::after {
+        display: none;
+    }
+
+    .tabButton {
+        border-radius: 30px
+    }
+}
+
+.tabContent {
+    padding: 10px;
+}
+
+.frameTab {
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+@media (max-width: 993px) {
+    .frameTab {
+        margin-left: 0;
+        padding-left: 0
+    }
+}
+
+.interactionArea {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    justify-items: center;
+    justify-content: space-evenly;
+}
+
+.title {
+    height: 90px;
+    background-color: #75d1ff;
+    color: #FFF;
+    font-family: 'Segoe UI';
+    border-radius: 20px;
+    margin-left: 10px;
+}
+
+.btnPredict {
+    font-size: 16px;
+    color: #fff !important;
+    background-color: #34b40e !important;
+    border-color: #34b40e !important;
+}
+
+.btnPredict:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+
+.btnReset {
+    font-size: 16px;
+    color: #fff;
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+}
+
+
+.btnReset:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}

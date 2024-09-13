@@ -1,0 +1,25 @@
+.title {
+  height: 90px;
+  background-color: #75d1ff;
+  color: #FFF;
+  font-family: 'Segoe UI';
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+
+}
+
+.btnPredict {
+  width: 100px;
+  height: 40px;
+  background-color: #34b40e;
+  border: none;
+  /* align-items: center !important; */
+  margin: 0 auto;
+  vertical-align: middle !important;
+}
+
+.frameTab {
+  margin-left: 30px;
+  margin-right: 10px;
+}
