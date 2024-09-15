@@ -1,5 +1,5 @@
 import { memo, useMemo } from 'react';
-import { useStore } from '../../../store';
+import { useStore } from '../../../../store';
 
 
 function PredictionText() {
@@ -35,7 +35,7 @@ function PredictionText() {
         <label className='mb-md-2 mt-lg-2'>Kết quả dự đoán</label>
       </div>
       <div className='col-md-6'>
-        <input 
+        <input
           className='form-control'
           disabled
           value={value}

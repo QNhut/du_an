@@ -1,5 +1,6 @@
 import clsx from 'clsx'
-import style from './side-panel.module.css'
+import style from './SidePanel.module.css'
+import { useStore, actions } from '../../../store';
 
 const panels = [
   {
@@ -8,33 +9,36 @@ const panels = [
   },
   {
     id: 'tab2',
-    text: 'Dự đoán điểm cuối cùng',
+    text: 'Dự đoán điểm dựa trên ngữ cảnh',
   },
   {
     id: 'tab3',
-    text: 'Dự đoán điểm dựa trên ngữ cảnh',
+    text: 'Dự đoán điểm cuối cùng',
   }
 ]
 
 
-function SidePanel({ activeTabLeft, setActiveTabLeft }) {
+function SidePanel() {
+
+  const [state, dispath] = useStore()
+
   return (
-    <>
+    <div className={style.parent}>
       {panels.map((item) => (
-        <li key={item.id} className={clsx('nav-item mx-2 mx-sm-0 mx-md-2 mx-lg-0', style.root)}>
+        <li key={item.id} className={clsx('nav-item col-4', style.root)}>
           <a 
             className={clsx(
               style.item,
-              activeTabLeft === item.id && style.active
+              state.activeTabLeft === item.id && style.active,
             )}
-            onClick={() => setActiveTabLeft(item.id)}
+            onClick={() => dispath(actions.setActiveTabLeft(item.id))}
             href={`#${item.id}`}
           >
             {item.text}
           </a>
         </li>
       ))}
-    </>
+    </div>
   );
 }
 

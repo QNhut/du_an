@@ -1,6 +1,6 @@
 import Header from './Header/Header';
 import Body from './Body/Body';
-import style from './predictpage.module.css'
+import style from './Predictpage.module.css'
 
 function PredictPage() {
     return (
@@ -8,7 +8,7 @@ function PredictPage() {
             <div className="container-fluid">
                 <Header />
             </div>
-            <div className="container">
+            <div className="container-fluid">
                 <Body />
             </div>
         </div>
