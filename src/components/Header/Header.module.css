@@ -1,0 +1,32 @@
+.root {
+  border-bottom: 1px solid rgb(148, 148, 148);
+  margin-bottom: 10px;
+  background-color: #dbeafe;
+  position: relative;
+  box-shadow: 3px 3px 1px #8a8a8a;
+  border-radius: 7px;
+}
+
+.logo {
+  width: 120px;
+  /* position: absolute;
+  top: -3px; */
+}
+
+.title {
+  color: #0e4051;
+  font-family: "Manrope", sans-serif;
+  font-weight: bold;
+  font-size: 34px;
+  margin: 0 auto;
+}
+
+@media (max-width: 770px) {
+  .logo {
+    display: none;
+  }
+
+  .title {
+    margin-left: 20px !important;
+  }
+}
