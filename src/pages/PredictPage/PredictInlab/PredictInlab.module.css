@@ -1,0 +1,324 @@
+.frameButton {
+    margin-left: 0px;
+}
+
+.tabContainer {
+    margin-bottom: 10px;
+    border: none !important;
+}
+
+.tabButton {
+    padding: 10px;
+    border: none;
+    /* width: ; */
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+}
+
+.tabButton1 {
+    background-color: #D1FADF;
+    color: #075133;
+    border-radius: 30px 0 0 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.tabButton1.active {
+    background-color: #1cd98d;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.active.tabButton1::after {
+    border-left: 12px solid #1cd98d;
+}
+
+.tabButton1::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -12px;
+    border-left: 12px solid #D1FADF;
+    border-top: 23px solid transparent;
+    border-bottom: 23px solid transparent;
+    transition: border-left 0.3s ease;
+}
+
+.tabButton1:hover {
+    background-color: #1cd98d;
+    color: #ffffff;
+    font-weight: bold;
+    transform: translateY(-5px);
+}
+
+.tabButton1:hover::after {
+    border-left: 12px solid #1cd98d;
+}
+
+
+.tabButton2 {
+    background-color: #FEF0C7;
+    color: #7C3314;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.tabButton2.active {
+    background-color: #f4e47d;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.active.tabButton2::after {
+    border-left: 12px solid #f4e47d;
+}
+
+.tabButton2::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: -12px;
+    border-left: 13px solid #FEF0C7;
+    border-top: 23px solid transparent;
+    border-bottom: 23px solid transparent;
+    transition: border-left 0.3s ease;
+}
+
+.tabButton2::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0;
+    border-left: 13px solid #EEF5FF;
+    border-top: 23px solid transparent;
+    border-bottom: 23px solid transparent;
+}
+
+.tabButton2:hover {
+    background-color: #f4e47d;
+    color: #ffffff;
+    font-weight: bold;
+    transform: translateY(-5px);
+}
+
+.tabButton2:hover::after {
+    border-left: 12px solid #f4e47d;
+}
+
+.tabButton3 {
+    background-color: #FEE4E2;
+    color: #6E1507;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.tabButton3.active {
+    background-color: #ffb4af;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.active.tabButton3::after {
+    border-left: 12px solid #ffb4af;
+}
+
+.tabButton3::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: -12px;
+    border-left: 13px solid #FEE4E2;
+    border-top: 23px solid transparent;
+    border-bottom: 23px solid transparent;
+    transition: border-left 0.3s ease;
+}
+
+.tabButton3::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0;
+    border-left: 13px solid #EEF5FF;
+    border-top: 23px solid transparent;
+    border-bottom: 23px solid transparent;
+}
+
+.tabButton3:hover {
+    background-color: #ffb4af;
+    color: #ffffff;
+    font-weight: bold;
+    transform: translateY(-5px);
+}
+
+.tabButton3:hover::after {
+    border-left: 12px solid #ffb4af;
+}
+
+.tabButton4 {
+    background-color: #bcd7ff;
+    color: #0D1627;
+    border-radius: 0 30px 30px 0;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.tabButton4.active {
+    background-color: #7fb2ff;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.tabButton4::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0;
+    border-left: 13px solid #EEF5FF;
+    border-top: 23px solid transparent;
+    border-bottom: 23px solid transparent;
+}
+
+.tabButton4:hover {
+    background-color: #7fb2ff;
+    color: #ffffff;
+    font-weight: bold;
+    transform: translateY(-5px);
+}
+
+@media (min-width: 1200px) {
+
+
+    .tabButton2::before,
+    .tabButton3::before,
+    .tabButton4::before {
+        display: block;
+    }
+}
+
+@media (max-width: 993px) {
+
+    .title {
+        width: 100% !important;
+    }
+
+    .tabButton3::before,
+    .tabButton2::after {
+        display: none;
+    }
+
+    .tabButton3 {
+        border-radius: 30px 0 0 30px;
+    }
+
+    .tabButton2 {
+        border-radius: 0 30px 30px 0;
+    }
+
+    .footerTemp {
+        height: 120px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 769px) {
+
+    .tabButton2::before,
+    .tabButton3::before,
+    .tabButton4::before,
+    .tabButton1::after,
+    .tabButton3::after {
+        display: none;
+    }
+
+    .tabButton {
+        border-radius: 30px
+    }
+}
+
+.tabContent {
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity 0.25s ease, transform 0.5s ease;
+}
+
+.tabContent.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.frameTab {
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+@media (max-width: 993px) {
+    .frameTab {
+        margin-left: 0;
+        padding-left: 0
+    }
+}
+
+.interactionArea {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-items: center;
+    justify-content: space-evenly;
+    text-align: center !important;
+}
+
+.title {
+    height: 90px;
+    background-color: #75d1ff;
+    color: #FFF;
+    margin: 8px auto !important;
+    width: 70%;
+    font-family: "Manrope", sans-serif;
+    font-weight: bold;
+    border-radius: 20px;
+    margin-left: 10px;
+}
+
+.btnPredict {
+    width: 120px;
+    height: 40px;
+    background-color: #4dc529;
+    border: none;
+    /* align-items: center !important; */
+    margin: 0 auto;
+    vertical-align: middle !important;
+    margin-top: -2px;
+    margin-left: 10px;
+}
+
+.btnPredict:hover {
+    background-color: #34b40e;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.btnPredict:active {
+    background-color: #4dc529 !important;
+    transform: scale(0.95);
+}
+
+.btnReset {
+    width: 120px;
+    height: 40px;
+    background-color: #dc3545;
+    border: none;
+    /* align-items: center !important; */
+    margin: 0 auto;
+    vertical-align: middle !important;
+    margin-top: -2px;
+    margin-left: 200px !important;
+}
+
+.btnReset:hover {
+    background-color: #ba1825;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.btnReset:active {
+    background-color: #dc3545 !important;
+    transform: scale(0.95);
+}

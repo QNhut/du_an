@@ -1,4 +1,4 @@
-import { SET_PREDICTED_VALUE, SET_DATA_PREDICT, SET_RESET, SET_ACTIVE_TAB_LEFT, SET_STUDENT_ID } from "./constants"
+import { SET_PREDICTED_VALUE, SET_DATA_PREDICT, SET_RESET, SET_ACTIVE_TAB_LEFT, SET_STUDENT_ID, SET_PREDICTED_VALUE_FINAL } from "./constants"
 
 
 const initState = {
@@ -14,7 +14,7 @@ function reducer(state, action) {
 
     switch (action.type) {
         case SET_DATA_PREDICT: {
-            console.log(action);
+            // console.log(action);
             if (action.payload === "clear") {
                 return {
                     ...state,
@@ -57,6 +57,11 @@ function reducer(state, action) {
             return {
                 ...state,
                 studentID: action.payload
+            }
+        case SET_PREDICTED_VALUE_FINAL:
+            return {
+                ...state,
+                predictedValueFinal: action.payload
             }
         default:
             throw new Error("Invalid Action");

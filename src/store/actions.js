@@ -1,4 +1,4 @@
-import { SET_PREDICTED_VALUE, SET_DATA_PREDICT, SET_RESET, SET_ACTIVE_TAB_LEFT, SET_STUDENT_ID } from "./constants"
+import { SET_PREDICTED_VALUE, SET_DATA_PREDICT, SET_RESET, SET_ACTIVE_TAB_LEFT, SET_STUDENT_ID, SET_PREDICTED_VALUE_FINAL } from "./constants"
 
 
 export const setPredictedValue = (payload) => ({
@@ -23,5 +23,10 @@ export const setActiveTabLeft = (payload) => ({
 
 export const setStudentID = (payload) => ({
     type: SET_STUDENT_ID,
+    payload
+})
+
+export const setPredictedValueFinal = (payload) => ({
+    type: SET_PREDICTED_VALUE_FINAL,
     payload
 })
