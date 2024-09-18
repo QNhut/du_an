@@ -29,7 +29,7 @@ function PredictFinalScore() {
                 data: [state.studentID]
             }
             console.log(dataSend)
-            fetch('http://45.32.117.218:80/api/inlab', {
+            fetch('http://45.32.117.218:3000/api/inlab', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
