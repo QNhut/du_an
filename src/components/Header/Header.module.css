@@ -5,6 +5,7 @@
   position: relative;
   box-shadow: 3px 3px 1px #8a8a8a;
   border-radius: 7px;
+  height: 10vh;
 }
 
 .logo {
@@ -22,9 +23,9 @@
 }
 
 @media (max-width: 770px) {
-  .logo {
+  /* .logo {
     display: none;
-  }
+  } */
 
   .title {
     margin-left: 20px !important;
