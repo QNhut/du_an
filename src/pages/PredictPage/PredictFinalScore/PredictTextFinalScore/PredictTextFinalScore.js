@@ -27,7 +27,6 @@ function PredictTextFinalScore() {
           return "Điểm của bạn từ 8.5 đến 10"
         }
         case -1: {
-          // console.log("avc");
           return "Không tìm thấy mã số sinh viên"
         }
         default: {

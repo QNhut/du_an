@@ -83,7 +83,7 @@ function PredictInlab() {
         };
         // console.log(dataSend);
 
-        fetch('http://localhost:8000/api/inlab/', {
+        fetch('http://45.32.117.218:80/api/inlab', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(dataSend),
