@@ -4,7 +4,7 @@ import { faUser, faUsers } from "@fortawesome/free-solid-svg-icons";
 function Footer() {
 
     return (
-        <div className="container">
+        <div className="container pt-2">
             <div className="row">
                 <div className="col-xl-4">
                     <h1>Liên hệ</h1>
