@@ -20,7 +20,7 @@ function PredictBaseOnQuesstion() {
             <h1 className={clsx(
                 style.title,
                 'text-center',
-                'justify-content-center')}
+                'align-content-center')}
             >
                 Dự đoán điểm đựa trên ngữ cảnh
             </h1>

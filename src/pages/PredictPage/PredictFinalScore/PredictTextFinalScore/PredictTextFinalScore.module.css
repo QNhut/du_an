@@ -11,3 +11,10 @@
         margin-left: 4px !important;
     }
 }
+
+
+@media (max-width: 769px) {
+    .label {
+        margin-bottom: -2px;
+    }
+}

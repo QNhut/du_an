@@ -2,11 +2,13 @@
   height: 90px;
   background-color: #75d1ff;
   color: #FFF;
-  font-family: 'Segoe UI';
-  display: flex;
-  align-items: center;
+  margin: 8px auto !important;
+  width: 70%;
+  font-family: "Manrope", sans-serif;
+  font-weight: bold;
   border-radius: 20px;
-
+  margin-left: 10px;
+  font-size: 30px;
 }
 
 .btnPredict {
@@ -22,4 +24,11 @@
 .frameTab {
   margin-left: 30px;
   margin-right: 10px;
+}
+
+@media (max-width: 993px) {
+
+  .title {
+    width: 100% !important;
+  }
 }
