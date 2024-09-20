@@ -37,7 +37,7 @@
     content: '';
     position: absolute;
     top: 0;
-    right: -12px;
+    right: -11.5px;
     border-left: 12px solid #D1FADF;
     border-top: 23px solid transparent;
     border-bottom: 23px solid transparent;
@@ -76,7 +76,7 @@
     content: '';
     position: absolute;
     top: 0px;
-    right: -12px;
+    right: -11.5px;
     border-left: 13px solid #FEF0C7;
     border-top: 23px solid transparent;
     border-bottom: 23px solid transparent;
@@ -124,7 +124,7 @@
     content: '';
     position: absolute;
     top: 0px;
-    right: -12px;
+    right: -11.5px;
     border-left: 13px solid #FEE4E2;
     border-top: 23px solid transparent;
     border-bottom: 23px solid transparent;
@@ -182,13 +182,24 @@
     transform: translateY(-5px);
 }
 
-@media (min-width: 1200px) {
+@media (max-width: 1200px) {
 
 
     .tabButton2::before,
     .tabButton3::before,
     .tabButton4::before {
         display: block;
+    }
+
+    
+    .tabButton1::after {
+        right: -0.7em;
+        top: -1px;
+    }
+
+    .tabButton3::after {
+        right: -0.7em;
+        top: -1px;
     }
 }
 
@@ -201,6 +212,16 @@
     .tabButton3::before,
     .tabButton2::after {
         display: none;
+    }
+
+    .tabButton1::after {
+        right: -0.7em;
+        top: -1px;
+    }
+
+    .tabButton3::after {
+        right: -0.7em;
+        top: -1px;
     }
 
     .tabButton3 {

@@ -7,11 +7,12 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import style from './SidePanel.module.css'
 import { useStore, actions } from '../../store';
 import { Link } from 'react-router-dom';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
 function SidePanel() {
 
   const navigate = useNavigate()
-  console.log(navigate);
+  // console.log(navigate);
 
   const [isDropdown, setIsDropdown] = useState(false)
   const [isCollapse, setIsCollapse] = useState(false)
@@ -50,58 +51,61 @@ function SidePanel() {
 
 
   return (
-    <div className={clsx(style.parent)}>
-      {navbars.map((item, index) => (
-        <div
-          key={index}
-          className={style.frameNav}
-          onClick={e => {
-            if (item.name === 'Dự đoán')
-              setIsDropdown(!isDropdown)
-            navigate(item.link)
-          }}
-        >
-          <Link
-            className={clsx(
-              style.itemMenu,
-              item.name === 'Dự đoán' && 'dropdown-toggle'
-            )}
-            to={item.link}
-            onClick={item.name === 'Dự đoán' ? () => setIsDropdown(!isDropdown) : undefined}
+    <Navbar>
+      <Collapse>
+        <Nav className={clsx(style.parent, 'd-flex')}>
+          {navbars.map((item, index) => (
+            <NavItem
+              key={index}
+              className={clsx(style.frameNav, 'col-12')}
+              onClick={e => {
+                if (item.name === 'Dự đoán') {
+                  setIsDropdown(!isDropdown)
+                }
+                navigate(item.link)
+              }}
+            >
+              <Link
+                className={clsx(
+                  style.itemMenu,
+                  item.name === 'Dự đoán' && 'dropdown-toggle'
+                )}
+                to={item.link}
+                onClick={item.name === 'Dự đoán' ? () => setIsDropdown(!isDropdown) : undefined}
+              >
+                {item.name}
+              </Link>
+              {item.name === 'Dự đoán' && (
+                <div className={clsx(style.frameSubMenu, isDropdown && 'd-block row')}>
+                  {panels.map((item, index) => (
+                    <a
+                      key={index}
+                      className={clsx(
+                        style.item,
+                        state.activeTabLeft === item.id && style.active,
+                      )}
+                      href={`#${item.id}`}  
+                      onClick={(e) => {
+                        setIsDropdown(!isDropdown)
+                        dispath(actions.setActiveTabLeft(item.id));
+                      }}
+                    >
+                      {item.text}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </NavItem>
+          ))}
+          <button
+            className={style.collapseButton}
+            onClick={() => setIsCollapse(!isCollapse)}
           >
-            {item.name}
-          </Link>
-          {item.name === 'Dự đoán' && (
-            <div className={clsx(style.frameSubMenu, isDropdown && 'd-block')}>
-              {panels.map((item, index) => (
-                <a
-                  key={index}
-                  className={clsx(
-                    style.item,
-                    state.activeTabLeft === item.id && style.active,
-                  )}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setIsDropdown(!isDropdown)
-                    dispath(actions.setActiveTabLeft(item.id));
-                    window.history.pushState(null, null, `#${item.id}`);
-                  }}
-                  href={`#${item.id}`}
-                >
-                  {item.text}
-                </a>
-              ))}
-            </div>
-          )}
-        </div>
-      ))}
-      <button
-        className={style.collapseButton}
-        onClick={() => setIsCollapse(!isCollapse)}
-      >
-        <FontAwesomeIcon icon={faBars} />
-      </button>
-    </div>
+            <FontAwesomeIcon icon={faBars} />
+          </button>
+        </Nav>
+      </Collapse>
+    </Navbar>
   );
 }
 

@@ -7,3 +7,4 @@ export const SET_RESET = 'set_reset' //nút reset
 export const SET_ACTIVE_TAB_LEFT = 'set_active_tab_left' // thanh tabs bên trái
 export const SET_STUDENT_ID = 'set_student_id' //mã số sinh viên
 export const SET_PREDICTED_VALUE_FINAL = 'set_predicted_value_final'
+export const SET_ANALYSIS_VALUE_FINAL = 'set_analysis_value_final'

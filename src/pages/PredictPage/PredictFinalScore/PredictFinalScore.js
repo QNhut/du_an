@@ -8,6 +8,8 @@ import { useRef } from "react";
 import { actions, useStore } from "../../../store"
 import style from './PredictFinalScore.module.css'
 import PredictTextFinalScore from './PredictTextFinalScore/PredictTextFinalScore'
+import Bar from "./Bar/Bar";
+import DensityPlot from "./DensityPlot/DensityPlot";
 
 
 function PredictFinalScore() {
@@ -16,8 +18,8 @@ function PredictFinalScore() {
     const input = useRef()
 
     const handlePredict = () => {
-        console.log(input);
-        console.log(input.current.value);
+        // console.log(input);
+        // console.log(input.current.value);
 
         if (input.current.value === "") {
             // alert("Bạn phải nhập mã số sinh viên")
@@ -29,7 +31,7 @@ function PredictFinalScore() {
                 data: [state.studentID]
             }
             console.log(dataSend)
-            fetch('http://45.32.117.218:3000/api/inlab', {
+            fetch('http://localhost:8000/api/inlab/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -40,6 +42,38 @@ function PredictFinalScore() {
                 .then(data => {
                     console.log('Success:', data);
                     dispath(actions.setPredictedValueFinal(parseInt(data)))
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    }
+
+    const handleAnalysis = () => {
+        // console.log(input);
+        // console.log(input.current.value);
+
+        if (input.current.value === "") {
+            // alert("Bạn phải nhập mã số sinh viên")
+            toast.error("Bạn phải nhập đầy đủ thông tin!")
+        }
+        else {
+            let dataSend = {
+                task_type: "analysisFinal",
+                data: [state.studentID]
+            }
+            console.log(dataSend)
+            fetch('http://localhost:8000/api/inlab/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dataSend)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    dispath(actions.setAnalysisValueFinal(data))
                 })
                 .catch(error => {
                     console.error('Error:', error);
@@ -60,7 +94,7 @@ function PredictFinalScore() {
             <h1 className={clsx(
                 style.title,
                 'text-center',
-                'justify-content-center')}
+                'align-content-center')}
             >
                 Dự đoán điểm cuối cùng
             </h1>
@@ -88,7 +122,7 @@ function PredictFinalScore() {
                             style.btnAnalysis,
                             "btn btn-primary ml-2"
                         )}
-                    // onClick={}
+                        onClick={handleAnalysis}
                     >
                         <FontAwesomeIcon icon={faMagnifyingGlassChart} />&nbsp;Phân tích
                     </button>
@@ -107,8 +141,13 @@ function PredictFinalScore() {
                         </button>
                     </div>
                 </div>
-                <div className={clsx('col-12 mt-4', style.borderChart)}>
-
+                <div className={clsx('row', style.borderChart)}>
+                    <div className={clsx('col-lg-7', style.bar1)}>
+                        <Bar />
+                    </div>
+                    <div className={clsx('col-lg-5', style.densityPlot1)}>
+                        <DensityPlot />
+                    </div>
                 </div>
             </div>
             <div className={style.footerTemp}></div>
