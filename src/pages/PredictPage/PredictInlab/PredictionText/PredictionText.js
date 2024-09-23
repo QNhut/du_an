@@ -7,7 +7,7 @@ import style from './PredictionText.module.css'
 
 function PredictionText() {
 
-  const [state, dispath] = useStore()
+  const [state] = useStore()
 
   const value = useMemo(() => {
     switch (parseInt(state.predictedValue[0])) {

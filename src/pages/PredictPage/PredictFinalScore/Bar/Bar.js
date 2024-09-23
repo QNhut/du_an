@@ -4,14 +4,23 @@ import { useStore } from "../../../../store";
 
 function Bar() {
 
-    const [state, dispath] = useStore()
+    const [state] = useStore()
 
     const dataDraw = {
-        dataOne: [9.87, 6.89, 10., 10., 10.,
-            10., 9.33, 8.96],
-        dataAll: [8.91, 8.35, 9.19, 9.29, 8.76,
-            9.06, 8.84, 8.90]
+        dataOne: [
+            state.dataPredictFinal?.Lab1?.Prelab || 0,
+            state.dataPredictFinal?.Lab1?.Inlab || 0,
+            state.dataPredictFinal?.Lab2?.Prelab || 0,
+            state.dataPredictFinal?.Lab2?.Inlab || 0,
+            state.dataPredictFinal?.Lab3?.Prelab || 0,
+            state.dataPredictFinal?.Lab3?.Inlab || 0,
+            state.dataPredictFinal?.Lab4?.Prelab || 0,
+            state.dataPredictFinal?.Lab4?.Inlab || 0
+        ],
+        dataAll: state.analysisValueFinal || []
     }
+
+
 
     const options = {
         chart: {
@@ -29,7 +38,7 @@ function Bar() {
             text: '',
         },
         xAxis: {
-            categories: ['Prelab1', 'Inlab1', 'Prelab2', 'Inlab2', 'Prelab3', 'Inlab3', 'Prelab4', 'Inlab4'],
+            categories: ['Prelab 1', 'Inlab 1', 'Prelab 2', 'Inlab 2', 'Prelab 3', 'Inlab 3', 'Prelab 4', 'Inlab 4'],
             crosshair: true,
         },
         yAxis: [{
@@ -68,7 +77,7 @@ function Bar() {
                 var t = this.points.reduce(function (s, point) {
                     let text = point.y + "";
                     // console.log(s);
-                    return s + `<li style="list-style-type: none; margin-left: -30px;"><span style="color:${point.color};font-size: 12px;">●</span> ` + `<span style="font-size: 12px;">${point.series.name} ${text}</span></li>`;
+                    return `${s}<li style="list-style-type: none; margin-left: -30px;"><span style="color:${point.color};font-size: 12px;">●</span> <span style="font-size: 12px;">${point.series.name} ${text}</span></li>`;
                 }, `<span><b class="hello" style="margin-left: -30px;">${this.x}</b></span>`);
                 return '<ul style="margin-bottom: -2px">' + t + '</ul>'
             },
@@ -77,7 +86,7 @@ function Bar() {
                 if (point.negative) {
                     y = 70;
                 }
-                let x = point.plotX;
+                // let x = point.plotX;
                 // if (point > )
                 // console.log(x);
 

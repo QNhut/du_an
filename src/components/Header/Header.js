@@ -1,11 +1,12 @@
 import clsx from 'clsx';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useNavigation } from 'react-router-dom';
+import { useState } from 'react';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, } from 'reactstrap';
+import { useHistory } from 'react-router-dom';
+
+import { useStore } from '../../store';
 import style from './Header.module.css';
 import logoIUH from '../../images/Logo.png'
-// import { Navbar, NavbarToggler, Nav, NavItem, NavLink, Container, NavbarBrand, Collapse, Dropdown, DropdownItem } from 'reactstrap';
-import { useState } from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, NavbarText, } from 'reactstrap';
-import { actions, useStore } from '../../store';
 
 function Header() {
 
@@ -19,22 +20,29 @@ function Header() {
     {
       id: 'tab1',
       text: 'Dự đoán điểm Inlab theo Prelab',
+      link: '/predict-page/bai-toan-1'
     },
     {
       id: 'tab2',
       text: 'Dự đoán điểm dựa trên ngữ cảnh',
+      link: '/predict-page/bai-toan-2'
     },
     {
       id: 'tab3',
       text: 'Dự đoán điểm cuối cùng',
+      link: '/predict-page/bai-toan-3'
     }
   ]
 
-  const [state, dispath] = useStore()
+  const [state] = useStore()
 
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+
+  const navigate = useNavigate();
+
+  const link = useLocation()
 
 
   return (
@@ -55,31 +63,25 @@ function Header() {
                         <span>{item.name}</span>
                       </DropdownToggle>
                       <DropdownMenu start className={style.dropdownMenu}>
-                        {subNavbars.map((item, index) => (
+                        {subNavbars.map((item1, index) => (
                           <div
                             className={clsx(
-                              state.activeTabLeft === item.id && style.active
+                              link.pathname === item.link && style.active
                             )}
                             key={index}
-                            onClick={(e) => {
-                              e.preventDefault()
-                              dispath(actions.setActiveTabLeft(item.id));
-                              window.history.pushState(null, '', `#${item.id}`);
+                            onClick={() => {
+                              navigate(item1.link);
                             }}
                           >
                             <DropdownItem
                               className={style.itemSubMenu}
                             >
-                              <a
+                              <Link
                                 className={clsx(style.item)}
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  dispath(actions.setActiveTabLeft(item.id));
-                                  window.history.pushState(null, '', `#${item.id}`);
-                                }}
+                                to={item1.link}
                               >
-                                {item.text}
-                              </a>
+                                {item1.text}
+                              </Link>
                             </DropdownItem>
 
                           </div>
@@ -91,7 +93,11 @@ function Header() {
                 )
               }
               return (
-                <NavItem className={clsx(style.navItem, 'mr-2')} key={index}>
+                <NavItem
+                  className={clsx(style.navItem, 'mr-2')}
+                  key={index}
+                  onClick={() => navigate(item.link)}
+                >
                   <Link className="nav-link ms-5 me-5" to={item.link}><span>{item.name}</span></Link>
                 </NavItem>
               )

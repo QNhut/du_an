@@ -9,3 +9,14 @@
     text-align: start;
     margin-left: 9vw;
 }
+
+.root {
+    background-color: #dbeafe;
+    /* margin-left: -10px; */
+    /* max-width: 102%; */
+    margin-right: 0;
+    bottom: 0;
+    width: 100vw;
+    margin-left: -9px;
+    position:absolute;
+}

@@ -9,6 +9,11 @@ function PredictTextFinalScore() {
 
     const [state, dispath] = useStore()
 
+    const object = {
+        "task_type": "predictFinal",
+        "data": [ 9.9, 10, 10, 10, 10, 10, 10, 10]
+    }
+
     const value = useMemo(() => {
       switch (parseInt(state.predictedValueFinal)) {
         case 0: {
@@ -40,7 +45,7 @@ function PredictTextFinalScore() {
             <div className={clsx(style.label, 'col-lg-3 text-end mt-2')}>
                 <label className={clsx('mb-md-2 mt-lg-2')}>Kết quả dự đoán</label>
             </div>
-            <div className={clsx("col-lg-5 mt-2", style.input)}>
+            <div className={clsx("col-lg-8 mt-2", style.input)}>
                 <input
                     className='form-control'
                     disabled

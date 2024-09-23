@@ -1,22 +1,17 @@
 import clsx from "clsx"
 import style from './PredictBaseOnQesstion.module.css'
 import { useStore } from "../../../store"
-import  PredictTextBaseOnQuestion from "./PredictTextBaseOnQuesstion/PredictTextBaseOnQuesstion"
+import PredictTextBaseOnQuestion from "./PredictTextBaseOnQuesstion/PredictTextBaseOnQuesstion"
+import Footer from "../../../components/Footer/Footer"
+import Header from "../../../components/Header/Header"
 
 function PredictBaseOnQuesstion() {
 
     const [state, dispath] = useStore()
 
     return (
-        <div
-            className={clsx(
-                'tab-pane',
-                'fade',
-                'ml-md-2',
-                style.frameTab,
-                state.activeTabLeft === 'tab2' && 'show active')}
-            id="tab2"
-        >
+        <div className={clsx('container-fluid', style.root)}>
+            <Header />
             <h1 className={clsx(
                 style.title,
                 'text-center',
@@ -56,6 +51,7 @@ function PredictBaseOnQuesstion() {
             <div className="col-md-12 mt-2">
                 <PredictTextBaseOnQuestion />
             </div>
+            <Footer/>
         </div>
     )
 }
