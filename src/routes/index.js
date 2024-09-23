@@ -1,11 +1,15 @@
 import HomePage from "../pages/HomePage/HomePage"
-import PredictPage from "../pages/PredictPage/PredictPage"
 import Login from '../pages/Login/Login'
+import PredictInlab from "../pages/PredictPage/PredictInlab/PredictInlab"
+import PredictFinalScore from "../pages/PredictPage/PredictFinalScore/PredictFinalScore"
+import PredictBaseOnQuesstion from "../pages/PredictPage/PredictBaseOnQuesstion/PredictBaseOnQuesstion"
 
 const publicRoutes = [
     {path: '/', component: HomePage },
-    {path: '/predict-page', component: PredictPage},
-    {path: '/login', component: Login}
+    {path: '/login', component: Login},
+    {path: '/predict-page/bai-toan-1', component: PredictInlab},
+    {path: '/predict-page/bai-toan-2', component: PredictBaseOnQuesstion},
+    {path: '/predict-page/bai-toan-3', component: PredictFinalScore}
 ]
 
 const privateRoutes = [

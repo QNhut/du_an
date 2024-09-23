@@ -8,6 +8,8 @@ import style from './PredictInlab.module.css';
 import Lab from './LabItems/Lab';
 import PredictionText from './PredictionText/PredictionText';
 import { useStore, actions } from '../../../store';
+import Header from '../../../components/Header/Header';
+import Footer from '../../../components/Footer/Footer';
 
 function PredictInlab() {
     const [state, dispatch] = useStore();
@@ -116,15 +118,8 @@ function PredictInlab() {
     }, [activeTab]);
 
     return (
-        <div
-            className={clsx(
-                'tab-pane',
-                'fade',
-                style.frameTab,
-                state.activeTabLeft === 'tab1' && 'show active'
-            )}
-            id="tab1"
-        >
+        <div className={clsx('container-fluid', style.root)}>
+            <Header />
             <h2 className={clsx(style.title, 'text-center', 'align-content-center')}>
                 Dự đoán điểm theo từng lab
             </h2>
@@ -174,6 +169,7 @@ function PredictInlab() {
                 </div>
             </div>
             <div className={style.footerTemp}></div>
+            <Footer />
         </div>
     );
 }

@@ -1,4 +1,4 @@
-import { SET_PREDICTED_VALUE, SET_DATA_PREDICT, SET_RESET, SET_ACTIVE_TAB_LEFT, SET_STUDENT_ID, SET_PREDICTED_VALUE_FINAL, SET_ANALYSIS_VALUE_FINAL } from "./constants"
+import { SET_PREDICTED_VALUE, SET_DATA_PREDICT, SET_RESET, SET_ACTIVE_TAB_LEFT, SET_PREDICTED_VALUE_FINAL, SET_ANALYSIS_VALUE_FINAL, SET_DATA_PREDICT_FINAL } from "./constants"
 
 
 const initState = {
@@ -8,7 +8,8 @@ const initState = {
     activeTabLeft: 'tab1',
     studentID: "",
     predictedValueFinal: "",
-    analysisValueFinal: {}
+    analysisValueFinal: [],
+    dataPredictFinal: {}
 }
 
 function reducer(state, action) {
@@ -54,11 +55,6 @@ function reducer(state, action) {
                 ...state,
                 activeTabLeft: action.payload
             }
-        case SET_STUDENT_ID:
-            return {
-                ...state,
-                studentID: action.payload
-            }
         case SET_PREDICTED_VALUE_FINAL:
             return {
                 ...state,
@@ -68,6 +64,11 @@ function reducer(state, action) {
             return {
                 ...state,
                 analysisValueFinal: action.payload
+            }
+        case SET_DATA_PREDICT_FINAL:
+            return {
+                ...state,
+                dataPredictFinal: action.payload
             }
         default:
             throw new Error("Invalid Action");

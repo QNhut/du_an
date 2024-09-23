@@ -1,4 +1,4 @@
-import { SET_PREDICTED_VALUE, SET_DATA_PREDICT, SET_RESET, SET_ACTIVE_TAB_LEFT, SET_STUDENT_ID, SET_PREDICTED_VALUE_FINAL, SET_ANALYSIS_VALUE_FINAL } from "./constants"
+import { SET_PREDICTED_VALUE, SET_DATA_PREDICT, SET_RESET, SET_ACTIVE_TAB_LEFT, SET_PREDICTED_VALUE_FINAL, SET_ANALYSIS_VALUE_FINAL, SET_DATA_PREDICT_FINAL } from "./constants"
 
 
 export const setPredictedValue = (payload) => ({
@@ -21,11 +21,6 @@ export const setActiveTabLeft = (payload) => ({
     payload
 })
 
-export const setStudentID = (payload) => ({
-    type: SET_STUDENT_ID,
-    payload
-})
-
 export const setPredictedValueFinal = (payload) => ({
     type: SET_PREDICTED_VALUE_FINAL,
     payload
@@ -33,5 +28,10 @@ export const setPredictedValueFinal = (payload) => ({
 
 export const setAnalysisValueFinal = (payload) => ({
     type: SET_ANALYSIS_VALUE_FINAL,
+    payload
+})
+
+export const setDataPredictFinal = (payload) => ({
+    type: SET_DATA_PREDICT_FINAL,
     payload
 })

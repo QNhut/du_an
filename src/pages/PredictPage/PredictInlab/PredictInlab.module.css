@@ -1,5 +1,6 @@
 .frameButton {
     margin-left: 0px;
+    margin-bottom: 30px !important;
 }
 
 .tabContainer {
@@ -296,6 +297,7 @@
     font-weight: bold;
     border-radius: 20px;
     margin-left: 10px;
+    margin-bottom: 20px !important;
 }
 
 .btnPredict {
@@ -342,4 +344,14 @@
 .btnReset:active {
     background-color: #dc3545 !important;
     transform: scale(0.95);
+}
+
+.root {
+    position: relative;
+    z-index: 0;
+    padding-top: 82px !important;
+    padding-left: 10px;
+    min-height: 100vh !important;
+    background-color: #EEF5FF;
+    padding-bottom: 200px;
 }

@@ -5,8 +5,6 @@
   position: fixed;
   box-shadow: 3px 3px 1px #8a8a8a;
   border-radius: 2px;
-  /* height: 9vh; */
-  width: 100vw;
   margin-left: -13px;
 }
 
@@ -44,11 +42,11 @@
 
 .navItem {
   border-radius: 30px;
+  cursor: pointer;
 }
 
 .navItem:hover span {
   color: #fff;
-  font-weight: bold;
 }
 
 .navItem:hover .dropdownToggle {

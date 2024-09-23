@@ -1,25 +1,28 @@
 import { Link } from "react-router-dom"
 import style from './HomePage.module.scss'
 import clsx from 'clsx'
+import { actions, useStore } from "../../store"
 
 function HomePage() {
 
+    const [state, dispatch] = useStore()
     const tabs = [
         {
-            id: 'tab1',
+            id: 'bai-toan-1',
             text: 'Dự đoán điểm Inlab theo Prelab',
         },
         {
-            id: 'tab2',
+            id: 'bai-toan-2',
             text: 'Dự đoán điểm dựa trên ngữ cảnh',
         },
         {
-            id: 'tab3',
+            id: 'bai-toan-3',
             text: 'Dự đoán điểm cuối cùng',
         }
     ]
 
     return (
+
         <div className={style.root}>
             <div className={style.stars1}></div>
             <div className={style.stars2}></div>
@@ -37,7 +40,7 @@ function HomePage() {
                         <div className={clsx('col-lg-4 mt-4', style.frameButton)} key={index}>
                             <Link
                                 className={clsx(style.button, 'btn', style[`button${index + 1}`])}
-                                to = {`/predict-page#tab${index+1}`}
+                                to={`/predict-page/${item.id}`}
                             >
                                 {item.text}
                             </Link>
