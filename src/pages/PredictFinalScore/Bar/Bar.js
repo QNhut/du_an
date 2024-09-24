@@ -1,6 +1,6 @@
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from 'highcharts'
-import { useStore } from "../../../../store";
+import { useStore } from "../../../store";
 
 function Bar() {
 

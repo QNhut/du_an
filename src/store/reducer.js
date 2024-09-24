@@ -1,15 +1,17 @@
-import { SET_PREDICTED_VALUE, SET_DATA_PREDICT, SET_RESET, SET_ACTIVE_TAB_LEFT, SET_PREDICTED_VALUE_FINAL, SET_ANALYSIS_VALUE_FINAL, SET_DATA_PREDICT_FINAL } from "./constants"
+import { SET_PREDICTED_VALUE, SET_DATA_PREDICT, SET_RESET, SET_PREDICTED_VALUE_FINAL, SET_ANALYSIS_VALUE_FINAL, SET_DATA_PREDICT_FINAL, SET_DATA_PREDICT_QUESTION, SET_PREDICTED_VALUE_QUESTION } from "./constants"
 
 
 const initState = {
     dataPredict: [],
     reset: false,
     predictedValue: "",
-    activeTabLeft: 'tab1',
-    studentID: "",
-    predictedValueFinal: "",
+
+    dataPredictFinal: {},
     analysisValueFinal: [],
-    dataPredictFinal: {}
+    predictedValueFinal: "",
+    
+    dataPredictQuestion: {},
+    predictedValueQuestion: ''
 }
 
 function reducer(state, action) {
@@ -50,11 +52,6 @@ function reducer(state, action) {
                 ...state,
                 reset: action.payload
             }
-        case SET_ACTIVE_TAB_LEFT:
-            return {
-                ...state,
-                activeTabLeft: action.payload
-            }
         case SET_PREDICTED_VALUE_FINAL:
             return {
                 ...state,
@@ -69,6 +66,16 @@ function reducer(state, action) {
             return {
                 ...state,
                 dataPredictFinal: action.payload
+            }
+        case SET_DATA_PREDICT_QUESTION:
+            return {
+                ...state,
+                dataPredictQuestion: action.payload
+            }
+        case SET_PREDICTED_VALUE_QUESTION:
+            return {
+                ...state,
+                predictedValueQuestion: action.payload
             }
         default:
             throw new Error("Invalid Action");

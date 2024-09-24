@@ -1,7 +1,7 @@
 import { memo, useMemo } from 'react';
 import clsx from 'clsx';
 
-import { useStore } from '../../../../store';
+import { useStore } from '../../../store';
 import style from './PredictionText.module.css'
 
 
