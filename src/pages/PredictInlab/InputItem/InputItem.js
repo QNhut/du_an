@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import clsx from 'clsx';
 
-import { useStore, actions } from '../../../../store';
+import { useStore, actions } from '../../../store';
 import style from './InputItem.module.css'
 import InputField from '../InputField/InputField'
 

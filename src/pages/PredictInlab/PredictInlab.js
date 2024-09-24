@@ -7,9 +7,10 @@ import { toast } from 'react-toastify';
 import style from './PredictInlab.module.css';
 import Lab from './LabItems/Lab';
 import PredictionText from './PredictionText/PredictionText';
-import { useStore, actions } from '../../../store';
-import Header from '../../../components/Header/Header';
-import Footer from '../../../components/Footer/Footer';
+import { useStore, actions } from '../../store';
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
+import { AnimatePresence, motion } from 'framer-motion';
 
 function PredictInlab() {
     const [state, dispatch] = useStore();
@@ -85,7 +86,7 @@ function PredictInlab() {
         };
         // console.log(dataSend);
 
-        fetch('http://45.32.117.218:3000/api/inlab', {
+        fetch('http://localhost:8000/api/inlab/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(dataSend),
@@ -110,7 +111,6 @@ function PredictInlab() {
         { id: 'inlab4', text: 'Dự đoán Inlab4', content: <Lab index={4} /> },
     ];
 
-    // Tạo hiệu ứng khi activeTab thay đổi
     useEffect(() => {
         setFadeIn(false);
         const timer = setTimeout(() => setFadeIn(true), 300);
@@ -120,55 +120,67 @@ function PredictInlab() {
     return (
         <div className={clsx('container-fluid', style.root)}>
             <Header />
-            <h2 className={clsx(style.title, 'text-center', 'align-content-center')}>
-                Dự đoán điểm theo từng lab
-            </h2>
+            <AnimatePresence mode='wait'>
+                <motion.div
+                    key="predict-final"
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -100 }}
+                    transition={{ duration: 0.4 }}
+                >
+                    <div className={style.body}>
+                        <h2 className={clsx(style.title, 'text-center', 'align-content-center')}>
+                            Dự đoán điểm theo từng lab
+                        </h2>
 
-            <ul className={clsx(style.tabContainer, 'nav nav-tabs row', style.frameButton)}>
-                {tabs.map((tab, index) => (
-                    <div className={clsx('col-xl-2 col-lg-3 col-md-6', style.tab)} key={index}>
-                        <li
-                            className={clsx(
-                                index === 0 && style.tabButton1,
-                                index === 1 && style.tabButton2,
-                                index === 2 && style.tabButton3,
-                                index === 3 && style.tabButton4,
-                                'nav-item mt-2',
-                                style.tabButton,
-                                activeTab === index && style.active
-                            )}
-                            onClick={() => {
-                                handleReset();
-                                setActiveTab(index);
-                            }}
-                        >
-                            {tab.text}
-                        </li>
+                        <ul className={clsx(style.tabContainer, 'nav nav-tabs row', style.frameButton)}>
+                            {tabs.map((tab, index) => (
+                                <div className={clsx('col-xl-2 col-lg-3 col-md-6', style.tab)} key={index}>
+                                    <li
+                                        className={clsx(
+                                            index === 0 && style.tabButton1,
+                                            index === 1 && style.tabButton2,
+                                            index === 2 && style.tabButton3,
+                                            index === 3 && style.tabButton4,
+                                            'nav-item mt-2',
+                                            style.tabButton,
+                                            activeTab === index && style.active
+                                        )}
+                                        onClick={() => {
+                                            handleReset();
+                                            setActiveTab(index);
+                                        }}
+                                    >
+                                        {tab.text}
+                                    </li>
+                                </div>
+                            ))}
+                        </ul>
+
+                        <div className={clsx(style.tabContent, fadeIn && style.active)}>
+                            {tabs[activeTab].content}
+
+                            <PredictionText />
+
+                            <div className={clsx(style.interactionArea, 'row d-flex justify-content-center mb-lg-2')}>
+                                <button
+                                    className={clsx(style.btnPredict, 'btn btn-success mx-2')}
+                                    onClick={handlePredict}
+                                >
+                                    <FontAwesomeIcon icon={faCircleQuestion} />&nbsp;Dự đoán
+                                </button>
+                                <button
+                                    className={clsx(style.btnReset, 'btn btn-danger mx-2')}
+                                    onClick={handleReset}
+                                >
+                                    <FontAwesomeIcon icon={faRotateLeft} />&nbsp;Xóa trắng
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                ))}
-            </ul>
-
-            <div className={clsx(style.tabContent, fadeIn && style.active)}>
-                {tabs[activeTab].content}
-
-                <PredictionText />
-
-                <div className={clsx(style.interactionArea, 'row d-flex justify-content-center mb-lg-2')}>
-                    <button
-                        className={clsx(style.btnPredict, 'btn btn-success mx-2')}
-                        onClick={handlePredict}
-                    >
-                        <FontAwesomeIcon icon={faCircleQuestion} />&nbsp;Dự đoán
-                    </button>
-                    <button
-                        className={clsx(style.btnReset, 'btn btn-danger mx-2')}
-                        onClick={handleReset}
-                    >
-                        <FontAwesomeIcon icon={faRotateLeft} />&nbsp;Xóa trắng
-                    </button>
-                </div>
-            </div>
-            <div className={style.footerTemp}></div>
+                    <div className={style.footerTemp}></div>
+                </motion.div>
+            </AnimatePresence>
             <Footer />
         </div>
     );

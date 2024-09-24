@@ -10,6 +10,9 @@ function InputFinal({ label, id, value, placeholder, min, max, onChange, name },
   useImperativeHandle(ref, () => ({
     focus() {
       inputRef.current.focus()
+    },
+    select() {
+      inputRef.current.select()
     }
   }))
 

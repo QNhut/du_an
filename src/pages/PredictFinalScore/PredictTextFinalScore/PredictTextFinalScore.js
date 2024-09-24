@@ -1,18 +1,13 @@
 import clsx from "clsx"
 import { useMemo } from "react"
 
-import { useStore } from "../../../../store"
+import { useStore } from "../../../store"
 import style from './PredictTextFinalScore.module.css'
 
 
 function PredictTextFinalScore() {
 
-    const [state, dispath] = useStore()
-
-    const object = {
-        "task_type": "predictFinal",
-        "data": [ 9.9, 10, 10, 10, 10, 10, 10, 10]
-    }
+    const [state] = useStore()
 
     const value = useMemo(() => {
       switch (parseInt(state.predictedValueFinal)) {

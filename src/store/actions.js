@@ -1,4 +1,4 @@
-import { SET_PREDICTED_VALUE, SET_DATA_PREDICT, SET_RESET, SET_ACTIVE_TAB_LEFT, SET_PREDICTED_VALUE_FINAL, SET_ANALYSIS_VALUE_FINAL, SET_DATA_PREDICT_FINAL } from "./constants"
+import { SET_PREDICTED_VALUE, SET_DATA_PREDICT, SET_RESET, SET_PREDICTED_VALUE_FINAL, SET_ANALYSIS_VALUE_FINAL, SET_DATA_PREDICT_FINAL, SET_DATA_PREDICT_QUESTION, SET_PREDICTED_VALUE_QUESTION } from "./constants"
 
 
 export const setPredictedValue = (payload) => ({
@@ -16,11 +16,6 @@ export const setReset = (payload) => ({
     payload
 })
 
-export const setActiveTabLeft = (payload) => ({
-    type: SET_ACTIVE_TAB_LEFT,
-    payload
-})
-
 export const setPredictedValueFinal = (payload) => ({
     type: SET_PREDICTED_VALUE_FINAL,
     payload
@@ -33,5 +28,15 @@ export const setAnalysisValueFinal = (payload) => ({
 
 export const setDataPredictFinal = (payload) => ({
     type: SET_DATA_PREDICT_FINAL,
+    payload
+})
+
+export const setDataPredictQuestion = (payload) => ({
+    type: SET_DATA_PREDICT_QUESTION,
+    payload
+})
+
+export const setPredictedValueQuestion = (payload) => ({
+    type: SET_PREDICTED_VALUE_QUESTION,
     payload
 })

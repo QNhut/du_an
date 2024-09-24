@@ -17,8 +17,8 @@ function Footer() {
         <div className={clsx("container-fluid", style.root)}>
             <div className={clsx("container-fluid pt-2 text-center")}>
                 <div className="row">
-                    <div className="col-xl-6 border">
-                        <h1>Liên hệ</h1>
+                    <div className="col-md-6">
+                        <h3>Liên hệ</h3>
                         <div>
                             <ul>
                                 {contacts.map((item, index) => {
@@ -29,8 +29,8 @@ function Footer() {
                             </ul>
                         </div>
                     </div>
-                    <div className="col-xl-6">
-                        <h1>Thống kê</h1>
+                    <div className="col-md-6">
+                        <h3>Thống kê</h3>
                         <div>
                             <ul className={style.statistical}>
                                 <li><FontAwesomeIcon icon={faUsers} /> Số lượt  truy cập: ...</li>

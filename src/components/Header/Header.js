@@ -1,10 +1,9 @@
 import clsx from 'clsx';
-import { Link, useLocation, useNavigate, useNavigation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, } from 'reactstrap';
-import { useHistory } from 'react-router-dom';
 
-import { useStore } from '../../store';
+import { actions, useStore } from '../../store';
 import style from './Header.module.css';
 import logoIUH from '../../images/Logo.png'
 
@@ -34,7 +33,7 @@ function Header() {
     }
   ]
 
-  const [state] = useStore()
+  const [state, dispatch] = useStore()
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -57,9 +56,12 @@ function Header() {
             {navbars.map((item, index) => {
               if (item.name === 'Dự đoán') {
                 return (
-                  <div className={clsx(style.navItem, 'ps-5 pe-5')} key={item.name}>
+                  <div
+                    key={item.name}
+                    onClick={() => window.history.pushState(null, null, '#')}
+                  >
                     <UncontrolledDropdown nav inNavbar>
-                      <DropdownToggle className={style.dropdownToggle} nav caret>
+                      <DropdownToggle className={clsx(style.dropdownToggle, style.navItem, 'ps-5 pe-5')} nav caret>
                         <span>{item.name}</span>
                       </DropdownToggle>
                       <DropdownMenu start className={style.dropdownMenu}>
@@ -71,6 +73,9 @@ function Header() {
                             key={index}
                             onClick={() => {
                               navigate(item1.link);
+                              dispatch(actions.setPredictedValue(''));
+                              dispatch(actions.setPredictedValueFinal(''));
+                              dispatch(actions.setPredictedValueQuestion(''));
                             }}
                           >
                             <DropdownItem

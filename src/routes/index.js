@@ -1,8 +1,8 @@
 import HomePage from "../pages/HomePage/HomePage"
 import Login from '../pages/Login/Login'
-import PredictInlab from "../pages/PredictPage/PredictInlab/PredictInlab"
-import PredictFinalScore from "../pages/PredictPage/PredictFinalScore/PredictFinalScore"
-import PredictBaseOnQuesstion from "../pages/PredictPage/PredictBaseOnQuesstion/PredictBaseOnQuesstion"
+import PredictInlab from "../pages/PredictInlab/PredictInlab"
+import PredictFinalScore from "../pages/PredictFinalScore/PredictFinalScore"
+import PredictBaseOnQuesstion from "../pages/PredictBaseOnQuestion/PredictBaseOnQuestion"
 
 const publicRoutes = [
     {path: '/', component: HomePage },

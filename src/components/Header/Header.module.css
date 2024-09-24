@@ -28,7 +28,7 @@
 }
 
 .dropdownMenu {
-  margin-left: -6vw;
+  margin-left: -3vw;
   margin-top: 1vh !important;
   background-color: #dbeafe;
 }
@@ -46,6 +46,10 @@
 }
 
 .navItem:hover span {
+  color: #fff;
+}
+
+.navItem:hover {
   color: #fff;
 }
 
