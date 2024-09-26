@@ -89,7 +89,7 @@
   }
 
   .root {
-    padding-bottom: 200px !important;
+    padding-bottom: 100px !important;
   }
 
   .label {
@@ -100,13 +100,12 @@
 }
 
 .root {
-  position: relative;
   z-index: 0;
   padding-top: 82px !important;
   padding-left: 10px;
   min-height: 100vh !important;
   background-color: #EEF5FF;
-  padding-bottom: 100px;
+  /* padding-bottom: 10vh !important; */
 }
 
 .body {

@@ -14,9 +14,12 @@
     background-color: #dbeafe;
     /* margin-left: -10px; */
     /* max-width: 102%; */
-    margin-right: 0;
-    bottom: 0;
-    width: 99vw;
-    margin-left: -1px;
-    position:absolute;
+    margin-top: 100px !important;
+    margin-bottom: -200px;
+    /* border-radius: 10px 0 10px 0; */
+    /* width: 99vw; */
+    margin-left: -0.64em;
+    /* margin-right: 0; */
+    /* width: 101.5%; */
+    position: absolute;
 }
