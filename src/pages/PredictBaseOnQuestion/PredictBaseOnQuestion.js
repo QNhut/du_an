@@ -66,10 +66,10 @@ function PredictBaseOnQuestion() {
             return;
         }
         else {
-            if (value1.length !== 8) {
+            if (value1.length > 8 || value1.length < 7) {
                 studentIDRef.current.focus();
                 studentIDRef.current.select();
-                toast.error("Mã số sinh viên phải chứa đúng 8 kí tự");
+                toast.error("Mã số sinh viên phải chứa từ 7 đến 8 kí tự");
                 return;
             }
         }

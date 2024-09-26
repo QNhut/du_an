@@ -230,7 +230,7 @@
     /* align-items: center !important; */
     margin: 0 auto;
     vertical-align: middle !important;
-    margin-top: -2px;
+    /* margin-top: -2px; */
     margin-left: 10px;
 }
 
@@ -253,8 +253,8 @@
     /* align-items: center !important; */
     margin: 0 auto;
     vertical-align: middle !important;
-    margin-top: -2px;
-    margin-left: 200px !important;
+    /* margin-top: -2px; */
+    margin-left: 10px;
 }
 
 .btnReset:hover {

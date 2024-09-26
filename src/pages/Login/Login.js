@@ -62,7 +62,7 @@ function HomePage() {
                                             'btn',
                                             style.buttonLogin
                                             )}
-                                        to="/predict-page"
+                                        to="/"
                                     >
                                         Đăng nhập
                                     </Link>

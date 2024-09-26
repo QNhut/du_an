@@ -87,7 +87,34 @@
     width: 98vw;
   }
 
+  .dropdownMenu {
+    margin-left: 0vw !important;
+  }
+
   /* .logo {
     display: none
   } */
+}
+
+@media (max-width: 1200px) {
+  .dropdownMenu {
+    margin-left: -4.5vw;
+  }
+}
+
+@media (max-width: 993px) {
+  .dropdownMenu {
+    margin-left: -5vw;
+  }
+}
+
+@media (max-width: 800px) {
+  .dropdownMenu {
+    margin-left: -6vw;
+  }
+}
+@media (max-width: 800px) {
+  .dropdownMenu {
+    margin-left: -6vw;
+  }
 }

@@ -93,7 +93,9 @@ function PredictInlab() {
         })
             .then(response => response.json())
             .then(data => {
+                console.log(data);
                 dispatch(actions.setPredictedValue(data));
+
             })
             .catch(error => console.error('Error:', error));
     };
@@ -162,19 +164,23 @@ function PredictInlab() {
 
                             <PredictionText />
 
-                            <div className={clsx(style.interactionArea, 'row d-flex justify-content-center mb-lg-2')}>
-                                <button
-                                    className={clsx(style.btnPredict, 'btn btn-success mx-2')}
-                                    onClick={handlePredict}
-                                >
-                                    <FontAwesomeIcon icon={faCircleQuestion} />&nbsp;Dự đoán
-                                </button>
-                                <button
-                                    className={clsx(style.btnReset, 'btn btn-danger mx-2')}
-                                    onClick={handleReset}
-                                >
-                                    <FontAwesomeIcon icon={faRotateLeft} />&nbsp;Xóa trắng
-                                </button>
+                            <div className={clsx(style.interactionArea, 'row justify-content-center mb-lg-2')}>
+                                <div className='col-6'>
+                                    <button
+                                        className={clsx(style.btnPredict, 'btn btn-success')}
+                                        onClick={handlePredict}
+                                    >
+                                        <FontAwesomeIcon icon={faCircleQuestion} />&nbsp;Dự đoán
+                                    </button>
+                                </div>
+                                <div className='col-6'>
+                                    <button
+                                        className={clsx(style.btnReset, 'btn btn-danger')}
+                                        onClick={handleReset}
+                                    >
+                                        <FontAwesomeIcon icon={faRotateLeft} />&nbsp;Xóa trắng
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
