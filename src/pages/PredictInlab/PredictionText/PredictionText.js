@@ -8,29 +8,30 @@ import style from './PredictionText.module.css'
 function PredictionText() {
 
   const [state] = useStore()
-
+  
   const value = useMemo(() => {
+    var attemps = state.count
     switch (parseInt(state.predictedValue[0])) {
       case 0: {
-        return "Điểm của bạn bé hơn 4"
+        return `Điểm của bạn bé hơn 4, bạn nên làm ${attemps} lần để được điểm tốt hơn`
       }
       case 1: {
-        return "Điểm của bạn từ 4 đến 5.5"
+        return `Điểm của bạn từ 4 đến 5.5, bạn nên làm ${attemps} lần để được điểm tốt hơn`
       }
       case 2: {
-        return "Điểm của bạn từ 5.5 đến 7"
+        return `Điểm của bạn từ 5.5 đến 7, bạn nên làm ${attemps} lần để được điểm tốt hơn`
       }
       case 3: {
-        return "Điểm của bạn từ 7 đến 8.5"
+        return `Điểm của bạn từ 7 đến 8.5, bạn nên làm ${attemps} lần để được điểm tốt hơn`
       }
       case 4: {
-        return "Điểm của bạn từ 8.5 đến 10"
+        return `Điểm của bạn từ 8.5 đến 10`
       }
       default: {
         return ""
       }
     }
-  }, [state.predictedValue])
+  }, [state.predictedValue, state.count])
 
   return (
     <div className='row'>

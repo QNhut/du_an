@@ -2,7 +2,7 @@
 
 .root {
     min-height: 100vh;
-    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    background-image: radial-gradient( circle 369px at -2.9% 12.9%,  rgba(247,234,163,1) 0%, rgba(236,180,238,0.56) 46.4%, rgba(163,203,247,1) 100.7% );
     overflow: hidden;
 }
 
@@ -61,23 +61,23 @@
 }
 
 .title {
-    color: #FFF;
+    color: #ececec;
     text-align: center;
     font-family: "Roboto", sans-serif;
     font-weight: 700;
     font-size: 68px;
-    letter-spacing: 6px;
+    // letter-spacing: 6px;
     animation: moveUp 1s ease forwards;
     animation-delay: 0.2s;
     margin-top: 260px;
 }
 
-.title span {
-    background: -webkit-linear-gradient(white, #38495a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    position: relative;
-}
+// .title span {
+//     background: -webkit-linear-gradient(white, #38495a);
+//     -webkit-background-clip: text;
+//     -webkit-text-fill-color: transparent;
+//     position: relative;
+// }
 
 .frameButton {
     display: flex;
@@ -120,7 +120,8 @@
 }
 
 .button1 {
-    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    background-image: linear-gradient(135deg, #05999E, #CBE7E3);
+    // background: linear-gradient(135deg, #2ecc71, #27ae60);
     animation: appear 0.5s ease forwards;
     animation-delay: 1.2s;
 
@@ -135,7 +136,7 @@
 }
 
 .button2 {
-    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    background: linear-gradient(135deg, #18A5A7, #BFFFC7);
     animation: appear 0.5s ease forwards;
     animation-delay: 1.5s;
 

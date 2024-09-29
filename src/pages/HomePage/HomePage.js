@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import style from './HomePage.module.scss'
 import clsx from 'clsx'
 import { actions, useStore } from "../../store"
+import Header from '../../components/Header/Header'
 
 function HomePage() {
 
@@ -17,7 +18,7 @@ function HomePage() {
         },
         {
             id: 'bai-toan-3',
-            text: 'Dự đoán điểm cuối cùng',
+            text: 'Dự đoán điểm thi cuối kỳ',
         }
     ]
 
@@ -32,7 +33,7 @@ function HomePage() {
                     className={clsx(style.title, 'col-lg-12')}
                 >
                     <span>
-                        HỆ THỐNG DỰ ĐOÁN ĐIỂM SINH VIÊN
+                        Công cụ AI dự báo kết quả học tập<br /> và gợi ý hướng cải thiện cho người học
                     </span>
                 </div>
                 {tabs.map((item, index) => {

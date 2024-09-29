@@ -1,17 +1,20 @@
-import { SET_PREDICTED_VALUE, SET_DATA_PREDICT, SET_RESET, SET_PREDICTED_VALUE_FINAL, SET_ANALYSIS_VALUE_FINAL, SET_DATA_PREDICT_FINAL, SET_DATA_PREDICT_QUESTION, SET_PREDICTED_VALUE_QUESTION } from "./constants"
+import { SET_PREDICTED_VALUE, SET_DATA_PREDICT, SET_RESET, SET_PREDICTED_VALUE_FINAL, SET_ANALYSIS_VALUE_FINAL, SET_DATA_PREDICT_FINAL, SET_DATA_PREDICT_QUESTION, SET_PREDICTED_VALUE_QUESTION, SET_COUNT, SET_TOPIC, SET_LAB } from "./constants"
 
 
 const initState = {
     dataPredict: [],
     reset: false,
     predictedValue: "",
+    count: 0,
 
     dataPredictFinal: {},
     analysisValueFinal: [],
     predictedValueFinal: "",
-    
+    lab: "",
+
     dataPredictQuestion: {},
-    predictedValueQuestion: ''
+    predictedValueQuestion: '',
+    topic: [],
 }
 
 function reducer(state, action) {
@@ -76,6 +79,21 @@ function reducer(state, action) {
             return {
                 ...state,
                 predictedValueQuestion: action.payload
+            }
+        case SET_COUNT:
+            return {
+                ...state,
+                count: action.payload
+            }
+        case SET_TOPIC:
+            return {
+                ...state,
+                topic: action.payload
+            }
+        case SET_LAB:
+            return {
+                ...state,
+                lab: action.payload
             }
         default:
             throw new Error("Invalid Action");
