@@ -24,7 +24,7 @@ function HomePage() {
 
     return (
 
-        <div className={style.root}>
+        <div className={clsx(style.root, 'container-fluid')}>
             <div className={style.stars1}></div>
             <div className={style.stars2}></div>
             <div className={style.stars3}></div>
