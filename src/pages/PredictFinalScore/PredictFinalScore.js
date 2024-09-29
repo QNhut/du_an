@@ -54,6 +54,26 @@ function PredictFinalScore() {
                     state.dataPredictFinal.Lab4.Inlab
                 ]
             };
+            var nameLab = ""
+            var minScore = Math.min(state.dataPredictFinal.Lab1.Prelab,
+                state.dataPredictFinal.Lab1.Inlab,
+                state.dataPredictFinal.Lab2.Prelab,
+                state.dataPredictFinal.Lab2.Inlab,
+                state.dataPredictFinal.Lab3.Prelab,
+                state.dataPredictFinal.Lab3.Inlab,
+                state.dataPredictFinal.Lab4.Prelab,
+                state.dataPredictFinal.Lab4.Inlab)
+            console.log(minScore);
+            
+            for (var i = 1; i < 5; i++) {
+                if (state.dataPredictFinal[`Lab${i}`].Prelab === minScore)
+                    nameLab += `Prelab${i}` + " "
+                if (state.dataPredictFinal[`Lab${i}`].Inlab === minScore)
+                    nameLab += `Inlab${i}` + " "
+            }
+            console.log(nameLab);
+            
+            dispath(actions.setLab(nameLab))
             fetch('http://localhost:8000/api/inlab/', {
                 method: 'POST',
                 headers: {
@@ -63,7 +83,18 @@ function PredictFinalScore() {
             })
                 .then(response => response.json())
                 .then(data => {
-                    dispath(actions.setPredictedValueFinal(parseInt(data)))
+                    if (state.dataPredictFinal.Lab1.Prelab >= 8.5 &&
+                        state.dataPredictFinal.Lab1.Inlab >= 8.5 &&
+                        state.dataPredictFinal.Lab2.Prelab >= 8.5 &&
+                        state.dataPredictFinal.Lab2.Inlab >= 8.5 &&
+                        state.dataPredictFinal.Lab3.Prelab >= 8.5 &&
+                        state.dataPredictFinal.Lab3.Inlab >= 8.5 &&
+                        state.dataPredictFinal.Lab4.Prelab >= 8.5 &&
+                        state.dataPredictFinal.Lab4.Inlab >= 8.5) {
+                        dispath(actions.setPredictedValueFinal(parseInt([4])))
+                        return
+                    }
+                    dispath(actions.setPredictedValueFinal(parseInt(data.Score)))
                 })
                 .catch(error => {
                     console.error('Error:', error);
@@ -116,7 +147,7 @@ function PredictFinalScore() {
                 >
                     <div className={style.body}>
                         <h1 className={clsx(style.title, 'text-center', 'align-content-center')}>
-                            Dự đoán điểm cuối cùng
+                            Dự đoán điểm thi cuối kỳ
                         </h1>
                         <div className="row mt-4">
                             <div className={clsx(isChart ? "col-lg-6" : "col-lg-12")}>

@@ -11,11 +11,17 @@ import { useStore, actions } from '../../store';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import { AnimatePresence, motion } from 'framer-motion';
+import BarInlab from './BarInlab/BarInlab';
+import Loading from '../../components/Loading/Loading'
 
+
+//nếu bấm 2 lần nút predict với cùng giá trị thì nó ra số điểm khác nhau
 function PredictInlab() {
     const [state, dispatch] = useStore();
     const [activeTab, setActiveTab] = useState(0);
     const [fadeIn, setFadeIn] = useState(true);
+    const [isChart, setIsChart] = useState(false)
+    // const [loading, setLoading] = useState(false)
 
     const handlePredict = () => {
         const inputs = document.querySelectorAll('input[name="predictInlab"]');
@@ -84,6 +90,7 @@ function PredictInlab() {
             task_type: 'predictInlab',
             data: state.dataPredict,
         };
+        // setLoading(false)
         // console.log(dataSend);
 
         fetch('http://localhost:8000/api/inlab/', {
@@ -95,15 +102,21 @@ function PredictInlab() {
             .then(data => {
                 console.log(data);
                 dispatch(actions.setPredictedValue(data));
-
+                if (isChart)
+                    setIsChart(true)
+                else
+                    setIsChart(!isChart)
             })
             .catch(error => console.error('Error:', error));
+        // setLoading(true)
     };
 
     const handleReset = () => {
         dispatch(actions.setReset(true));
         dispatch(actions.setDataPredict('clear'));
         dispatch(actions.setPredictedValue(''));
+        dispatch(actions.setCount(0))
+        setIsChart(false)
     };
 
     const tabs = [
@@ -161,9 +174,16 @@ function PredictInlab() {
 
                         <div className={clsx(style.tabContent, fadeIn && style.active)}>
                             {tabs[activeTab].content}
-
-                            <PredictionText />
-
+                            <div className={clsx(style.borderChart, isChart && 'd-block')}>
+                                <div className="row">
+                                    <div className={clsx(style.chart, 'col-12')}>
+                                        <BarInlab />
+                                    </div>
+                                </div>
+                            </div>
+                            {/* {loading ? (<Loading />) : ( */}
+                                <PredictionText />
+                            {/* )} */}
                             <div className={clsx(style.interactionArea, 'row justify-content-center mb-lg-2')}>
                                 <div className='col-6'>
                                     <button

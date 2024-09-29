@@ -28,7 +28,7 @@ function Header() {
     },
     {
       id: 'tab3',
-      text: 'Dự đoán điểm cuối cùng',
+      text: 'Dự đoán điểm thi cuối kỳ',
       link: '/predict-page/bai-toan-3'
     }
   ]

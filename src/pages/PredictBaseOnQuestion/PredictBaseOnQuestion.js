@@ -114,7 +114,12 @@ function PredictBaseOnQuestion() {
                 .then(response => response.json())
                 .then(data => {
                     console.log('Success:', data);
-                    dispath(actions.setPredictedValueQuestion(parseInt(data)))
+                    if(data === -2)
+                        dispath(actions.setPredictedValueQuestion(parseInt(data)))
+                    else {
+                        dispath(actions.setPredictedValueQuestion(parseInt(data.diemPredict)))
+                        dispath(actions.setTopic(data.topic))
+                    }
                 })
                 .catch(error => {
                     console.error('Error:', error);

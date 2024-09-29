@@ -283,6 +283,26 @@
     margin-right: 80px;
 }
 
+.borderChart {
+    border: 1px solid #929292;
+    border-radius: 10px;
+    box-shadow: 5px 4px #888888;
+    display: none;
+    position: relative;
+    height: 470px; 
+    max-width: 100%;
+    overflow-x: hidden;
+    margin-bottom: 30px !important;
+}
+
+.chart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+}
+
 @media (max-width: 1200px) {
 
 

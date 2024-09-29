@@ -10,14 +10,31 @@ function PredictTextBaseOnQuestion() {
     const [state] = useStore()
 
     const value = useMemo(() => {
-      const score = parseInt(state.predictedValueQuestion)
-      // console.log(score);
-      
-      if(score >= 0 && score <= 10)
-        return `Điểm của bạn là ${score} điểm`
-      else
-        return ""
-    }, [state.predictedValueQuestion])
+        const score = parseInt(state.predictedValueQuestion)
+        var topic = state.topic
+        var strTopic = ""
+        console.log(score);
+        for( var i =0; i< topic.length; i++) {
+            if(i === topic.length -1)
+                strTopic = strTopic + topic[i] + "."
+            else
+                strTopic = strTopic + topic[i] + ", "
+        }
+        // console.log(strTopic);
+        
+
+        if (score >= 0 && score < 10)
+            return `Điểm của bạn là ${score} điểm, bạn cần cải thiện các topic: ${strTopic}`
+        else
+            if (score === 10) {
+                return `Điểm của bạn là ${score} điểm`
+            }
+            if (score === -2) {
+                return `Không tìm thấy mã sinh viên`
+            }
+            else
+                return ""
+    })
 
     return (
         <div className="row">
