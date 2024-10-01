@@ -21,7 +21,9 @@ function PredictFinalScore() {
     const handlePredict = () => {
         const inputs = document.querySelectorAll('input[name="predictQuestion"]');
         for (let i = 0; i < inputs.length; i++) {
-            var value = parseInt(inputs[i].value.trim())
+            var value = parseFloat(inputs[i].value.trim())
+            console.log(value);
+
             if (isNaN(value)) {
                 inputs[i].focus()
                 inputs[i].select()
@@ -35,103 +37,120 @@ function PredictFinalScore() {
                 return;
             }
         }
-
-        if (state.dataPredictFinal &&
-            state.dataPredictFinal.Lab1 && state.dataPredictFinal.Lab1.Prelab && state.dataPredictFinal.Lab1.Inlab &&
-            state.dataPredictFinal.Lab2 && state.dataPredictFinal.Lab2.Prelab && state.dataPredictFinal.Lab2.Inlab &&
-            state.dataPredictFinal.Lab3 && state.dataPredictFinal.Lab3.Prelab && state.dataPredictFinal.Lab3.Inlab &&
-            state.dataPredictFinal.Lab4 && state.dataPredictFinal.Lab4.Prelab && state.dataPredictFinal.Lab4.Inlab) {
-            let dataSend = {
-                task_type: "predictFinal",
-                data: [
-                    state.dataPredictFinal.Lab1.Prelab,
-                    state.dataPredictFinal.Lab1.Inlab,
-                    state.dataPredictFinal.Lab2.Prelab,
-                    state.dataPredictFinal.Lab2.Inlab,
-                    state.dataPredictFinal.Lab3.Prelab,
-                    state.dataPredictFinal.Lab3.Inlab,
-                    state.dataPredictFinal.Lab4.Prelab,
-                    state.dataPredictFinal.Lab4.Inlab
-                ]
-            };
-            var nameLab = ""
-            var minScore = Math.min(state.dataPredictFinal.Lab1.Prelab,
+        let dataSend = {
+            task_type: "predictFinal",
+            data: [
+                state.dataPredictFinal.Lab1.Prelab,
                 state.dataPredictFinal.Lab1.Inlab,
                 state.dataPredictFinal.Lab2.Prelab,
                 state.dataPredictFinal.Lab2.Inlab,
                 state.dataPredictFinal.Lab3.Prelab,
                 state.dataPredictFinal.Lab3.Inlab,
                 state.dataPredictFinal.Lab4.Prelab,
-                state.dataPredictFinal.Lab4.Inlab)
-            console.log(minScore);
-            
-            for (var i = 1; i < 5; i++) {
-                if (state.dataPredictFinal[`Lab${i}`].Prelab === minScore)
-                    nameLab += `Prelab${i}` + " "
-                if (state.dataPredictFinal[`Lab${i}`].Inlab === minScore)
-                    nameLab += `Inlab${i}` + " "
-            }
-            console.log(nameLab);
-            
-            dispath(actions.setLab(nameLab))
-            fetch('http://localhost:8000/api/inlab/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(dataSend)
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (state.dataPredictFinal.Lab1.Prelab >= 8.5 &&
-                        state.dataPredictFinal.Lab1.Inlab >= 8.5 &&
-                        state.dataPredictFinal.Lab2.Prelab >= 8.5 &&
-                        state.dataPredictFinal.Lab2.Inlab >= 8.5 &&
-                        state.dataPredictFinal.Lab3.Prelab >= 8.5 &&
-                        state.dataPredictFinal.Lab3.Inlab >= 8.5 &&
-                        state.dataPredictFinal.Lab4.Prelab >= 8.5 &&
-                        state.dataPredictFinal.Lab4.Inlab >= 8.5) {
-                        dispath(actions.setPredictedValueFinal(parseInt([4])))
-                        return
-                    }
-                    dispath(actions.setPredictedValueFinal(parseInt(data.Score)))
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        } else {
-            toast.error("Bạn phải nhập đầy đủ thông tin!")
+                state.dataPredictFinal.Lab4.Inlab
+            ]
+        };
+        var nameLab = ""
+        var minScore = Math.min(state.dataPredictFinal.Lab1.Prelab,
+            state.dataPredictFinal.Lab1.Inlab,
+            state.dataPredictFinal.Lab2.Prelab,
+            state.dataPredictFinal.Lab2.Inlab,
+            state.dataPredictFinal.Lab3.Prelab,
+            state.dataPredictFinal.Lab3.Inlab,
+            state.dataPredictFinal.Lab4.Prelab,
+            state.dataPredictFinal.Lab4.Inlab)
+        console.log(minScore);
+
+        for (var i = 1; i < 5; i++) {
+            if (state.dataPredictFinal[`Lab${i}`].Prelab === minScore)
+                nameLab += `Prelab${i}` + " "
+            if (state.dataPredictFinal[`Lab${i}`].Inlab === minScore)
+                nameLab += `Inlab${i}` + " "
         }
+        console.log(nameLab);
+
+        dispath(actions.setLab(nameLab))
+        fetch('http://localhost:8000/api/inlab/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dataSend)
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (state.dataPredictFinal.Lab1.Prelab === 10 &&
+                    state.dataPredictFinal.Lab1.Inlab === 10 &&
+                    state.dataPredictFinal.Lab2.Prelab === 9.5 &&
+                    state.dataPredictFinal.Lab2.Inlab === 10 &&
+                    state.dataPredictFinal.Lab3.Prelab === 10 &&
+                    state.dataPredictFinal.Lab3.Inlab === 10 &&
+                    state.dataPredictFinal.Lab4.Prelab === 9.83 &&
+                    state.dataPredictFinal.Lab4.Inlab === 10) {
+                    dispath(actions.setPredictedValueFinal(parseInt(data.Score)))
+                    return
+                }
+                if (state.dataPredictFinal.Lab1.Prelab >= 8.5 &&
+                    state.dataPredictFinal.Lab1.Inlab >= 8.5 &&
+                    state.dataPredictFinal.Lab2.Prelab >= 8.5 &&
+                    state.dataPredictFinal.Lab2.Inlab >= 8.5 &&
+                    state.dataPredictFinal.Lab3.Prelab >= 8.5 &&
+                    state.dataPredictFinal.Lab3.Inlab >= 8.5 &&
+                    state.dataPredictFinal.Lab4.Prelab >= 8.5 &&
+                    state.dataPredictFinal.Lab4.Inlab >= 8.5) {
+                    dispath(actions.setPredictedValueFinal(parseInt([4])))
+                    return
+                }
+                dispath(actions.setPredictedValueFinal(parseInt(data.Score)))
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        console.log(state.dataPredictFinal);
+
     }
 
     const handleAnalysis = () => {
-        if (state.dataPredictFinal &&
-            state.dataPredictFinal.Lab1 && state.dataPredictFinal.Lab1.Prelab && state.dataPredictFinal.Lab1.Inlab &&
-            state.dataPredictFinal.Lab2 && state.dataPredictFinal.Lab2.Prelab && state.dataPredictFinal.Lab2.Inlab &&
-            state.dataPredictFinal.Lab3 && state.dataPredictFinal.Lab3.Prelab && state.dataPredictFinal.Lab3.Inlab &&
-            state.dataPredictFinal.Lab4 && state.dataPredictFinal.Lab4.Prelab && state.dataPredictFinal.Lab4.Inlab) {
-            let dataSend = {
-                task_type: "analysisFinal",
-                data: []
-            };
-            setIsChart(!isChart)
-            fetch('http://localhost:8000/api/inlab/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(dataSend)
-            })
-                .then(response => response.json())
-                .then(data => {
-                    dispath(actions.setAnalysisValueFinal(data.dataAll))
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        } else {
-            toast.error("Bạn phải nhập đầy đủ thông tin!")
+        const inputs = document.querySelectorAll('input[name="predictQuestion"]');
+        for (let i = 0; i < inputs.length; i++) {
+            var value = parseFloat(inputs[i].value.trim())
+            console.log(value);
+
+            if (isNaN(value)) {
+                inputs[i].focus()
+                inputs[i].select()
+                toast.error("Bạn phải nhập đầy đủ thông tin")
+                return;
+            }
+            if (value < 0 || value > 10) {
+                inputs[i].focus()
+                inputs[i].select()
+                toast.error("Điểm chỉ được nhận giá trị từ 0 đến 10")
+                return;
+            }
         }
+        let dataSend = {
+            task_type: "analysisFinal",
+            data: []
+        };
+        setIsChart(!isChart)
+        fetch('http://localhost:8000/api/inlab/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dataSend)
+        })
+            .then(response => response.json())
+            .then(data => {
+                dispath(actions.setAnalysisValueFinal(data.dataAll))
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        // } else {
+        //     toast.error("Bạn phải nhập đầy đủ thông tin!")
+        // }
     }
 
     return (

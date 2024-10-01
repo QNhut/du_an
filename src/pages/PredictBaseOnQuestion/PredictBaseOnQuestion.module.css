@@ -29,6 +29,10 @@
   background-color: #34b40e !important;
 }
 
+.btnPredict:focus {
+  background-color: #34b40e !important;
+}
+
 .btnPredict:active {
   background-color: #4dc529 !important;
   transform: scale(0.95);
@@ -47,6 +51,10 @@
 }
 
 .btnAnalysis:hover {
+  background-color: #fd7949;
+}
+
+.btnAnalysis:focus {
   background-color: #fd7949;
 }
 
