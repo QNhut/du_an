@@ -7,7 +7,7 @@ import InputFinal from '../InputFinal/InputFinal';
 
 function InputGroupFinal({ index = 1 }) {
 
-    const [state, dispath] = useStore()
+    const [state, dispatch] = useStore()
 
     const nameObject = `Lab${index}`;
 
@@ -25,7 +25,7 @@ function InputGroupFinal({ index = 1 }) {
             [field]: value
         }
         setInputData(newData)
-        dispath(actions.setDataPredictFinal({
+        dispatch(actions.setDataPredictFinal({
             ...state.dataPredictFinal,
             [nameObject]: newData
         }));

@@ -15,7 +15,7 @@ import Footer from "../../components/Footer/Footer";
 import { AnimatePresence, motion } from "framer-motion";
 
 function PredictFinalScore() {
-    const [state, dispath] = useStore()
+    const [state, dispatch] = useStore()
     const [isChart, setIsChart] = useState(false)
 
     const handlePredict = () => {
@@ -69,7 +69,7 @@ function PredictFinalScore() {
         }
         // console.log(nameLab);
 
-        dispath(actions.setLab(nameLab))
+        dispatch(actions.setLab(nameLab))
         fetch('http://localhost:8000/api/inlab/', {
             method: 'POST',
             headers: {
@@ -87,7 +87,7 @@ function PredictFinalScore() {
                     state.dataPredictFinal.Lab3.Inlab === 10 &&
                     state.dataPredictFinal.Lab4.Prelab === 9.83 &&
                     state.dataPredictFinal.Lab4.Inlab === 10) {
-                    dispath(actions.setPredictedValueFinal(parseInt(data.Score)))
+                    dispatch(actions.setPredictedValueFinal(parseInt(data.Score)))
                     return
                 }
                 if (state.dataPredictFinal.Lab1.Prelab >= 8.5 &&
@@ -98,10 +98,10 @@ function PredictFinalScore() {
                     state.dataPredictFinal.Lab3.Inlab >= 8.5 &&
                     state.dataPredictFinal.Lab4.Prelab >= 8.5 &&
                     state.dataPredictFinal.Lab4.Inlab >= 8.5) {
-                    dispath(actions.setPredictedValueFinal(parseInt([4])))
+                    dispatch(actions.setPredictedValueFinal(parseInt([4])))
                     return
                 }
-                dispath(actions.setPredictedValueFinal(parseInt(data.Score)))
+                dispatch(actions.setPredictedValueFinal(parseInt(data.Score)))
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -143,7 +143,7 @@ function PredictFinalScore() {
         })
             .then(response => response.json())
             .then(data => {
-                dispath(actions.setAnalysisValueFinal(data.dataAll))
+                dispatch(actions.setAnalysisValueFinal(data.dataAll))
             })
             .catch(error => {
                 console.error('Error:', error);
