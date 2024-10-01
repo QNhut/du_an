@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlassChart, faCircleQuestion } from '@fortawesome/free-solid-svg-icons'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { actions, useStore } from "../../store"
 import style from './PredictFinalScore.module.css'
@@ -22,7 +22,7 @@ function PredictFinalScore() {
         const inputs = document.querySelectorAll('input[name="predictQuestion"]');
         for (let i = 0; i < inputs.length; i++) {
             var value = parseFloat(inputs[i].value.trim())
-            console.log(value);
+            // console.log(value);
 
             if (isNaN(value)) {
                 inputs[i].focus()
@@ -59,15 +59,15 @@ function PredictFinalScore() {
             state.dataPredictFinal.Lab3.Inlab,
             state.dataPredictFinal.Lab4.Prelab,
             state.dataPredictFinal.Lab4.Inlab)
-        console.log(minScore);
+        // console.log(minScore);
 
         for (var i = 1; i < 5; i++) {
             if (state.dataPredictFinal[`Lab${i}`].Prelab === minScore)
-                nameLab += `Prelab${i}` + " "
+                nameLab += `Prelab${i} `
             if (state.dataPredictFinal[`Lab${i}`].Inlab === minScore)
-                nameLab += `Inlab${i}` + " "
+                nameLab += `Inlab${i} `
         }
-        console.log(nameLab);
+        // console.log(nameLab);
 
         dispath(actions.setLab(nameLab))
         fetch('http://localhost:8000/api/inlab/', {
@@ -106,7 +106,7 @@ function PredictFinalScore() {
             .catch(error => {
                 console.error('Error:', error);
             });
-        console.log(state.dataPredictFinal);
+        // console.log(state.dataPredictFinal);
 
     }
 
@@ -114,7 +114,7 @@ function PredictFinalScore() {
         const inputs = document.querySelectorAll('input[name="predictQuestion"]');
         for (let i = 0; i < inputs.length; i++) {
             var value = parseFloat(inputs[i].value.trim())
-            console.log(value);
+            // console.log(value);
 
             if (isNaN(value)) {
                 inputs[i].focus()

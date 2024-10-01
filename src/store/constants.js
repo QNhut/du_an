@@ -8,6 +8,7 @@ export const SET_COUNT = 'set_count' // số lần làm bài
 export const SET_DATA_PREDICT_QUESTION = 'set_data_predict_question' //data đem đi predict
 export const SET_PREDICTED_VALUE_QUESTION = 'set_predicted_value_question' //kết quả predict
 export const SET_TOPIC = 'set_topic' //topic gợi ý
+export const SET_RESET_QUESTION = 'set_reset_question' //nút reset 
 
 //Bai toan 3
 export const SET_PREDICTED_VALUE_FINAL = 'set_predicted_value_final' // kết quả predict

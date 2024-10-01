@@ -11,7 +11,7 @@ function HomePage() {
             <div className="row">
                 <div className="col-md-12 text-center mt-2">
                     <img src={logoIUH} alt='logo' className={style.logo}/>
-                    <h1 className="mt-4">HỆ THỐNG DỰ ĐOÁN ĐIỂM SINH VIÊN</h1>
+                    <h1 className="mt-4">CÔNG CỤ DỰ ĐOÁN KẾT QUẢ HỌC TẬP <br />& GỢI Ý CẢI THIỆN CHO NGƯỜI HỌC</h1>
                 </div>
             </div>
             <div className="row">

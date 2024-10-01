@@ -1,12 +1,9 @@
 import { Link } from "react-router-dom"
 import style from './HomePage.module.scss'
 import clsx from 'clsx'
-import { actions, useStore } from "../../store"
-import Header from '../../components/Header/Header'
 
 function HomePage() {
 
-    const [state, dispatch] = useStore()
     const tabs = [
         {
             id: 'bai-toan-1',
@@ -33,7 +30,7 @@ function HomePage() {
                     className={clsx(style.title, 'col-lg-12')}
                 >
                     <span>
-                        Công cụ AI dự báo kết quả học tập<br /> và gợi ý hướng cải thiện cho người học
+                        CÔNG CỤ DỰ ĐOÁN KẾT QUẢ HỌC TẬP <br />& GỢI Ý CẢI THIỆN CHO NGƯỜI HỌC
                     </span>
                 </div>
                 {tabs.map((item, index) => {

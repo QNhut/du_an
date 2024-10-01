@@ -1,4 +1,4 @@
-import { SET_PREDICTED_VALUE, SET_DATA_PREDICT, SET_RESET, SET_PREDICTED_VALUE_FINAL, SET_ANALYSIS_VALUE_FINAL, SET_DATA_PREDICT_FINAL, SET_DATA_PREDICT_QUESTION, SET_PREDICTED_VALUE_QUESTION, SET_COUNT, SET_TOPIC, SET_LAB } from "./constants"
+import { SET_PREDICTED_VALUE, SET_DATA_PREDICT, SET_RESET, SET_PREDICTED_VALUE_FINAL, SET_ANALYSIS_VALUE_FINAL, SET_DATA_PREDICT_FINAL, SET_DATA_PREDICT_QUESTION, SET_PREDICTED_VALUE_QUESTION, SET_COUNT, SET_TOPIC, SET_LAB, SET_RESET_QUESTION } from "./constants"
 
 
 export const setPredictedValue = (payload) => ({
@@ -13,6 +13,11 @@ export const setDataPredict = (payload) => ({
 
 export const setReset = (payload) => ({
     type: SET_RESET,
+    payload
+})
+
+export const setResetQuestion = (payload) => ({
+    type: SET_RESET_QUESTION,
     payload
 })
 

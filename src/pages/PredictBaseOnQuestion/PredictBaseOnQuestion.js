@@ -1,7 +1,7 @@
 import clsx from "clsx"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCircleQuestion, faMagnifyingGlassChart } from "@fortawesome/free-solid-svg-icons"
-import { useMemo, useRef, useState } from "react"
+import { faCircleQuestion, faRotateLeft } from "@fortawesome/free-solid-svg-icons"
+import { useEffect, useMemo, useRef, useState } from "react"
 
 import { actions, useStore } from "../../store"
 import style from './PredictBaseOnQuestion.module.css'
@@ -19,7 +19,7 @@ function PredictBaseOnQuestion() {
     const attemptsRef = useRef()
 
 
-    const [state, dispath] = useStore()
+    const [state, dispatch] = useStore()
     const initData = useMemo(() => ({
         Question: '',
         StudentID: '',
@@ -42,7 +42,7 @@ function PredictBaseOnQuestion() {
             [field]: value
         }
         setInputData(newData)
-        dispath(actions.setDataPredictQuestion({
+        dispatch(actions.setDataPredictQuestion({
             ...state.dataPredictQuestion,
             data: newData
         }));
@@ -101,9 +101,9 @@ function PredictBaseOnQuestion() {
                     state.dataPredictQuestion.data.Attemps,
                 ]
             };
-            console.log(state.dataPredictQuestion);
+            // console.log(state.dataPredictQuestion);
 
-            console.log(dataSend);
+            // console.log(dataSend);
             fetch('http://localhost:8000/api/inlab/', {
                 method: 'POST',
                 headers: {
@@ -114,11 +114,11 @@ function PredictBaseOnQuestion() {
                 .then(response => response.json())
                 .then(data => {
                     console.log('Success:', data);
-                    if(data === -2)
-                        dispath(actions.setPredictedValueQuestion(parseInt(data)))
+                    if (data === -2)
+                        dispatch(actions.setPredictedValueQuestion(parseInt(data)))
                     else {
-                        dispath(actions.setPredictedValueQuestion(parseInt(data.diemPredict)))
-                        dispath(actions.setTopic(data.topic))
+                        dispatch(actions.setPredictedValueQuestion(parseInt(data.diemPredict)))
+                        dispatch(actions.setTopic(data.topic))
                     }
                 })
                 .catch(error => {
@@ -129,6 +129,19 @@ function PredictBaseOnQuestion() {
             toast.error("Bạn phải nhập đầy đủ thông tin!")
         }
     }
+
+    const handleReset = () => {
+        dispatch(actions.setResetQuestion(true));
+        dispatch(actions.setDataPredictQuestion('clear'));
+        dispatch(actions.setPredictedValueQuestion(''));
+    };
+
+    useEffect(() => {
+        if (state.resetQuestion) {
+            setInputData(initData)
+            dispatch(actions.setResetQuestion(false))
+        }
+    }, [state.resetQuestion, initData, dispatch])
 
 
     return (
@@ -226,23 +239,20 @@ function PredictBaseOnQuestion() {
                             <div className="col-6 mt-2  text-center">
                                 <button
                                     className={clsx(
-                                        style.btnAnalysis,
-                                        "btn btn-primary ml-2"
-                                    )}
-                                // onClick={handleAnalysis}
-                                >
-                                    <FontAwesomeIcon icon={faMagnifyingGlassChart} />&nbsp;Phân tích
-                                </button>
-                            </div>
-                            <div className="col-6 mt-2 text-center">
-                                <button
-                                    className={clsx(
                                         style.btnPredict,
                                         "btn btn-primary ml-lg-8"
                                     )}
                                     onClick={handlePredict}
                                 >
                                     <FontAwesomeIcon icon={faCircleQuestion} />&nbsp;Dự đoán
+                                </button>
+                            </div>
+                            <div className="col-6 mt-2 text-center">
+                                <button
+                                    className={clsx(style.btnReset, 'btn btn-danger')}
+                                    onClick={handleReset}
+                                >
+                                    <FontAwesomeIcon icon={faRotateLeft} />&nbsp;Xóa trắng
                                 </button>
                             </div>
                         </div>
