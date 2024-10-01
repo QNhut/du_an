@@ -6,11 +6,11 @@ import reducer, { initState } from "./reducer"
 
 function Provider({ children }) {
 
-    // const [state, dispath] = useReducer(logger(reducer), initState)
-    const [state, dispath] = useReducer(reducer, initState)
+    // const [state, dispatch] = useReducer(logger(reducer), initState)
+    const [state, dispatch] = useReducer(reducer, initState)
 
     return (
-        <Context.Provider value={[state, dispath]}>
+        <Context.Provider value={[state, dispatch]}>
             {children}
         </Context.Provider>
     )
