@@ -13,7 +13,7 @@ function PredictTextBaseOnQuestion() {
         const score = parseInt(state.predictedValueQuestion)
         var topic = state.topic
         var strTopic = ""
-        console.log(score);
+        // console.log(score);
         for( var i =0; i< topic.length; i++) {
             if(i === topic.length -1)
                 strTopic = strTopic + topic[i] + "."

@@ -1,4 +1,4 @@
-import { SET_PREDICTED_VALUE, SET_DATA_PREDICT, SET_RESET, SET_PREDICTED_VALUE_FINAL, SET_ANALYSIS_VALUE_FINAL, SET_DATA_PREDICT_FINAL, SET_DATA_PREDICT_QUESTION, SET_PREDICTED_VALUE_QUESTION, SET_COUNT, SET_TOPIC, SET_LAB } from "./constants"
+import { SET_PREDICTED_VALUE, SET_DATA_PREDICT, SET_RESET, SET_PREDICTED_VALUE_FINAL, SET_ANALYSIS_VALUE_FINAL, SET_DATA_PREDICT_FINAL, SET_DATA_PREDICT_QUESTION, SET_PREDICTED_VALUE_QUESTION, SET_COUNT, SET_TOPIC, SET_LAB, SET_RESET_QUESTION } from "./constants"
 
 
 const initState = {
@@ -25,6 +25,7 @@ const initState = {
             "Inlab": 0
         }
     },
+    resetQuestion: false,
     analysisValueFinal: [],
     predictedValueFinal: "",
     lab: "",
@@ -72,6 +73,11 @@ function reducer(state, action) {
                 ...state,
                 reset: action.payload
             }
+        case SET_RESET_QUESTION:
+            return {
+                ...state,
+                resetQuestion: action.payload
+            }
         case SET_PREDICTED_VALUE_FINAL:
             return {
                 ...state,
@@ -88,6 +94,12 @@ function reducer(state, action) {
                 dataPredictFinal: action.payload
             }
         case SET_DATA_PREDICT_QUESTION:
+            if (action.payload === "clear") {
+                return {
+                    ...state,
+                    dataPredictQuestion: []
+                }
+            }
             return {
                 ...state,
                 dataPredictQuestion: action.payload

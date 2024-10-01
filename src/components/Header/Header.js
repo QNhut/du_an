@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, } from 'reactstrap';
 
 import { actions, useStore } from '../../store';
 import style from './Header.module.css';
@@ -47,9 +47,9 @@ function Header() {
   return (
     <>
       <Navbar className={style.root} expand='md' fixed='top'>
-        <NavbarBrand>
+        {/* <NavbarBrand> */}
           <Link to="/"><img src={logoIUH} alt='logo' className={clsx(style.logo, 'mt-2')} /></Link>
-        </NavbarBrand>
+        {/* </NavbarBrand> */}
         <NavbarToggler onClick={toggle} className='text-end' />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ms-auto" navbar>
@@ -64,7 +64,7 @@ function Header() {
                       <DropdownToggle className={clsx(style.dropdownToggle, style.navItem, 'ps-5 pe-5')} nav caret>
                         <span>{item.name}</span>
                       </DropdownToggle>
-                      <DropdownMenu start className={style.dropdownMenu}>
+                      <DropdownMenu className={style.dropdownMenu}>
                         {subNavbars.map((item1, index) => (
                           <div
                             className={clsx(

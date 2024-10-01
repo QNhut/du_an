@@ -43,8 +43,8 @@ function BarInlab() {
     }, [state.predictedValue, dispatch])
     //Không để state.dataPredict vào vì đang là two-way binding
 
-    console.log(col);
-    console.log(dataDraw);
+    // console.log(col);
+    // console.log(dataDraw);
 
     const yAxisLabels = ['Từ 0 đến 4', "Từ trên 4 đến 5.5", "Từ trên 5.5 đến 7", "Từ trên 7 đến 8.5", "Từ trên 8.5 đến 10"];
 

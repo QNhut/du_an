@@ -22,7 +22,7 @@ function InputItem({ index = 1, lab }) {
 
   const nameObject = `${lab}${index}`;
 
-  const [state, dispath] = useStore()
+  const [state, dispatch] = useStore()
 
   const initData = useMemo(() => ({
     nameObject: nameObject,
@@ -37,9 +37,9 @@ function InputItem({ index = 1, lab }) {
   useEffect(() => {
     if (state.reset) {
       setInputData(initData)
-      dispath(actions.setReset(false))
+      dispatch(actions.setReset(false))
     }
-  }, [state.reset, initData, dispath])
+  }, [state.reset, initData, dispatch])
 
   const handleChange = (field) => (e) => {
     var value = parseFloat(e.target.value)
@@ -48,7 +48,7 @@ function InputItem({ index = 1, lab }) {
       [field]: value
     }
     setInputData(newData)
-    dispath(actions.setDataPredict(newData))
+    dispatch(actions.setDataPredict(newData))
   };
 
   return (

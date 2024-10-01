@@ -12,7 +12,7 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import { AnimatePresence, motion } from 'framer-motion';
 import BarInlab from './BarInlab/BarInlab';
-import Loading from '../../components/Loading/Loading'
+// import Loading from '../../components/Loading/Loading'
 
 
 //nếu bấm 2 lần nút predict với cùng giá trị thì nó ra số điểm khác nhau
