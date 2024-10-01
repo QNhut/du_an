@@ -7,7 +7,24 @@ const initState = {
     predictedValue: "",
     count: 0,
 
-    dataPredictFinal: {},
+    dataPredictFinal: {
+        Lab1: {
+            "Prelab": 0,
+            "Inlab": 0
+        },
+        Lab2: {
+            "Prelab": 0,
+            "Inlab": 0
+        },
+        Lab3: {
+            "Prelab": 0,
+            "Inlab": 0
+        },
+        Lab4: {
+            "Prelab": 0,
+            "Inlab": 0
+        }
+    },
     analysisValueFinal: [],
     predictedValueFinal: "",
     lab: "",
