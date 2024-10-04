@@ -104,7 +104,7 @@ function PredictBaseOnQuestion() {
             // console.log(state.dataPredictQuestion);
 
             // console.log(dataSend);
-            fetch('http://localhost:8000/api/inlab/', {
+            fetch('http://165.22.244.31:8000/api/inlab/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
