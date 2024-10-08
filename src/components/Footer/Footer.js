@@ -17,19 +17,19 @@ function Footer() {
         <div className={clsx("container-fluid", style.root)}>
             <div className={clsx("container-fluid pt-2 text-center")}>
                 <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-md-7">
                         <h3>Liên hệ</h3>
                         <div>
                             <ul>
                                 {contacts.map((item, index) => {
-                                    return (
-                                        <li key={index} className={style.contact}>{item.name}{item.value}</li>
-                                    )
+                                    return (( item.name ==="A_Team" &&
+                                        <li key={index} className={clsx(style.contact)}><b>{item.name}{item.value}</b></li>
+                                    )|| <li key={index} className={style.contact}>{item.name}{item.value}</li>)
                                 })}
                             </ul>
                         </div>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-5">
                         <h3>Thống kê</h3>
                         <div>
                             <ul className={style.statistical}>
