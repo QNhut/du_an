@@ -3,8 +3,12 @@ import { faUser, faUsers } from "@fortawesome/free-solid-svg-icons";
 
 import style from './Footer.module.css'
 import clsx from "clsx";
+import { useEffect } from "react";
+import { actions, useStore } from "../../store";
 
 function Footer() {
+
+    const [state, dispatch] = useStore()
 
     const contacts = [
         { name: 'A_Team' },
@@ -12,6 +16,20 @@ function Footer() {
         { name: 'Điện thoại: ', value: "0328546227" },
         { name: 'Email: ', value: "22642481.trong@student.iuh.edu.vn" },
     ]
+
+    useEffect(() => {
+        fetch('http://localhost:8000/api/analytics/', {
+            method: 'GET',
+        })
+            .then(response => response.json())
+            .then(data => {
+                // console.log(data);
+                
+                dispatch(actions.setAccess(data))
+            })
+            .catch(error => console.log(error)
+            )
+    }, [])
 
     return (
         <div className={clsx("container-fluid", style.root)}>
@@ -22,9 +40,9 @@ function Footer() {
                         <div>
                             <ul>
                                 {contacts.map((item, index) => {
-                                    return (( item.name ==="A_Team" &&
+                                    return ((item.name === "A_Team" &&
                                         <li key={index} className={clsx(style.contact)}><b>{item.name}{item.value}</b></li>
-                                    )|| <li key={index} className={style.contact}>{item.name}{item.value}</li>)
+                                    ) || <li key={index} className={style.contact}>{item.name}{item.value}</li>)
                                 })}
                             </ul>
                         </div>
@@ -33,8 +51,8 @@ function Footer() {
                         <h3>Thống kê</h3>
                         <div>
                             <ul className={style.statistical}>
-                                <li><FontAwesomeIcon icon={faUsers} /> Số lượt  truy cập: ...</li>
-                                <li><FontAwesomeIcon icon={faUser} /> Đang online: ... </li>
+                                <li><FontAwesomeIcon icon={faUsers} /> Số lượt  truy cập: {state.access.analytics_data[0].event_count}</li>
+                                <li><FontAwesomeIcon icon={faUser} /> Đang online: {state.access.analytics_data[0].active_users} </li>
                             </ul>
                         </div>
                     </div>
