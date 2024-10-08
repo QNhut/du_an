@@ -70,7 +70,7 @@ function PredictFinalScore() {
         // console.log(nameLab);
 
         dispatch(actions.setLab(nameLab))
-        fetch('http://localhost:8000/api/inlab/', {
+        fetch('http://165.22.244.31:8000/api/inlab/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -8,9 +8,9 @@ function Footer() {
 
     const contacts = [
         { name: 'A_Team' },
-        { name: 'Địa chỉ: ' },
-        { name: 'Điện thoại: ' },
-        { name: 'Email: ' },
+        { name: 'Địa chỉ: ', value: "Số 12 Nguyễn Văn Bảo, Phường 4, Quận Gò Vấp, Thành phố Hồ Chí Minh" },
+        { name: 'Điện thoại: ', value: "0328546227" },
+        { name: 'Email: ', value: "22642481.trong@student.iuh.edu.vn" },
     ]
 
     return (
@@ -23,7 +23,7 @@ function Footer() {
                             <ul>
                                 {contacts.map((item, index) => {
                                     return (
-                                        <li key={index} className={style.contact}>{item.name}</li>
+                                        <li key={index} className={style.contact}>{item.name}{item.value}</li>
                                     )
                                 })}
                             </ul>
