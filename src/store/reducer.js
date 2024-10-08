@@ -1,4 +1,4 @@
-import { SET_PREDICTED_VALUE, SET_DATA_PREDICT, SET_RESET, SET_PREDICTED_VALUE_FINAL, SET_ANALYSIS_VALUE_FINAL, SET_DATA_PREDICT_FINAL, SET_DATA_PREDICT_QUESTION, SET_PREDICTED_VALUE_QUESTION, SET_COUNT, SET_TOPIC, SET_LAB, SET_RESET_QUESTION } from "./constants"
+import { SET_PREDICTED_VALUE, SET_DATA_PREDICT, SET_RESET, SET_PREDICTED_VALUE_FINAL, SET_ANALYSIS_VALUE_FINAL, SET_DATA_PREDICT_FINAL, SET_DATA_PREDICT_QUESTION, SET_PREDICTED_VALUE_QUESTION, SET_COUNT, SET_TOPIC, SET_LAB, SET_RESET_QUESTION, SET_ACCESS } from "./constants"
 
 
 const initState = {
@@ -33,6 +33,36 @@ const initState = {
     dataPredictQuestion: {},
     predictedValueQuestion: '',
     topic: [],
+
+    access: {
+        "analytics_data": [
+            {
+                "event_name": "page_view",
+                "event_count": "",
+                "active_users": ""
+            },
+            {
+                "event_name": "scroll",
+                "event_count": "",
+                "active_users": ""
+            },
+            {
+                "event_name": "user_engagement",
+                "event_count": "",
+                "active_users": ""
+            },
+            {
+                "event_name": "session_start",
+                "event_count": "",
+                "active_users": ""
+            },
+            {
+                "event_name": "first_visit",
+                "event_count": "",
+                "active_users": ""
+            }
+        ]
+    }
 }
 
 function reducer(state, action) {
@@ -123,6 +153,11 @@ function reducer(state, action) {
             return {
                 ...state,
                 lab: action.payload
+            }
+        case SET_ACCESS:
+            return {
+                ...state,
+                access: action.payload
             }
         default:
             throw new Error("Invalid Action");

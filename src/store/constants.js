@@ -15,3 +15,6 @@ export const SET_PREDICTED_VALUE_FINAL = 'set_predicted_value_final' // kết qu
 export const SET_ANALYSIS_VALUE_FINAL = 'set_analysis_value_final' // data nhận về để vẽ
 export const SET_DATA_PREDICT_FINAL = 'set_data_predict_final' // data đem đi predict
 export const SET_LAB = 'set_lab' //lab gợi ý về ôn thêm
+
+//
+export const SET_ACCESS = 'set_access'
