@@ -18,7 +18,7 @@ function Footer() {
     ]
 
     useEffect(() => {
-        fetch('http://localhost:8000/api/analytics/', {
+        fetch('http://165.22.244.31:8000/api/analytics/', {
             method: 'GET',
         })
             .then(response => response.json())
@@ -52,7 +52,7 @@ function Footer() {
                         <div>
                             <ul className={style.statistical}>
                                 <li><FontAwesomeIcon icon={faUsers} /> Số lượt  truy cập: {state.access.analytics_data[0].event_count}</li>
-                                <li><FontAwesomeIcon icon={faUser} /> Đang online: {state.access.analytics_data[0].active_users} </li>
+                                <li><FontAwesomeIcon icon={faUser} /> Số người dùng: {state.access.analytics_data[0].active_users} </li>
                             </ul>
                         </div>
                     </div>
