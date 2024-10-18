@@ -1,13 +1,18 @@
 .contact {
     list-style-type: none;
     text-align: start;
-    margin-left: 8vw;
+    /* margin-left: 8vw; */
 }
 
 .statistical {
     list-style-type: none;
     text-align: start;
-    margin-left: 9vw;
+    /* margin-left: 9vw; */
+}
+
+.nameTeam {
+    font-size: 20px;
+    color: rgb(255, 84, 124);
 }
 
 .root {
