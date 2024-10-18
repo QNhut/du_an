@@ -62,7 +62,7 @@ function Header() {
                   >
                     <UncontrolledDropdown nav inNavbar>
                       <DropdownToggle className={clsx(style.dropdownToggle, style.navItem, 'ps-5 pe-5')} nav caret>
-                        <span>{item.name}</span>
+                        <span className={style.navbarItem}>{item.name}</span>
                       </DropdownToggle>
                       <DropdownMenu className={style.dropdownMenu}>
                         {subNavbars.map((item1, index) => (
@@ -103,7 +103,7 @@ function Header() {
                   key={index}
                   onClick={() => navigate(item.link)}
                 >
-                  <Link className="nav-link ms-5 me-5" to={item.link}><span>{item.name}</span></Link>
+                  <Link className="nav-link ms-5 me-5" to={item.link}><span className={style.navbarItem}>{item.name}</span></Link>
                 </NavItem>
               )
             })}

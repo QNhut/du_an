@@ -77,6 +77,11 @@
   color: #FFF;
 }
 
+.navbarItem {
+  font-weight: bold;
+  font-size: 20px;
+}
+
 @media (max-width: 770px) {
 
   .title {
