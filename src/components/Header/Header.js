@@ -62,7 +62,7 @@ function Header() {
                   >
                     <UncontrolledDropdown nav inNavbar>
                       <DropdownToggle className={clsx(style.dropdownToggle, style.navItem, 'ps-5 pe-5')} nav caret>
-                        <span className={style.navbarItem}>{item.name}</span>
+                        <span className={style.navbarItem}>{item.name} </span>
                       </DropdownToggle>
                       <DropdownMenu className={style.dropdownMenu}>
                         {subNavbars.map((item1, index) => (
