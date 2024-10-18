@@ -48,7 +48,7 @@ function PredictTextBaseOnQuestion() {
         
 
         if (score >= 0 && score < 10)
-            return `Điểm của bạn là ${score} điểm. Để đạt điểm cao hơn bạn cần ôn luyện nhiều hơnvề${strTopic}.`
+            return `Điểm của bạn là ${score} điểm. Để đạt điểm cao hơn bạn cần ôn luyện nhiều hơn về${strTopic}.`
         else
             if (score === 10) {
                 return `Điểm của bạn là ${score} điểm`
